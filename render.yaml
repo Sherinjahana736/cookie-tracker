@@ -1,5 +1,5 @@
 services:
-  # 1. FastAPI Backend Service
+  # 1. FastAPI Backend Service (Python Web Service)
   - type: web
     name: cookie-tracker-backend
     env: python
@@ -12,9 +12,8 @@ services:
     envVars:
       - key: PYTHON_VERSION
         value: 3.10.0
-      # നിങ്ങളുടെ സെക്യൂരിറ്റി കീകളോ ഡാറ്റാബേസ് യുആർഎല്ലോ ഉണ്ടെങ്കിൽ അത് ഇവിടെ നൽകാം
 
-  # 2. React Frontend Service
+  # 2. React Frontend Service (Static Site)
   - type: web
     name: cookie-tracker-frontend
     env: static
@@ -22,7 +21,4 @@ services:
       cd frontend
       npm install
       npm run build
-    publishDir: frontend/dist # Vite ആണ് ഉപയോഗിക്കുന്നതെങ്കിൽ dist, സാധാരണ React ആണെങ്കിൽ build എന്ന് കൊടുക്കുക
-    envVars:
-      - key: REACT_APP_API_URL
-        value: https://cookie-tracker-backend.onrender.com # നിങ്ങളുടെ ബാക്കെൻഡ് യുആർഎൽ വരുമ്പോൾ ഇത് അപ്ഡേറ്റ് ചെയ്യാം
+    staticPublishPath: frontend/dist
