@@ -3,6 +3,7 @@ services:
   - type: web
     name: cookie-tracker-backend
     env: python
+    plan: free
     buildCommand: |
       cd cookie/cookie-tracker-graph
       pip install -r requirements.txt
