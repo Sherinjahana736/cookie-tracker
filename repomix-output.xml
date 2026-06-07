@@ -1,0 +1,4939 @@
+This file is a merged representation of the entire codebase, combined into a single document by Repomix.
+
+<file_summary>
+This section contains a summary of this file.
+
+<purpose>
+This file contains a packed representation of the entire repository's contents.
+It is designed to be easily consumable by AI systems for analysis, code review,
+or other automated processes.
+</purpose>
+
+<file_format>
+The content is organized as follows:
+1. This summary section
+2. Repository information
+3. Directory structure
+4. Repository files (if enabled)
+5. Multiple file entries, each consisting of:
+  - File path as an attribute
+  - Full contents of the file
+</file_format>
+
+<usage_guidelines>
+- This file should be treated as read-only. Any changes should be made to the
+  original repository files, not this packed version.
+- When processing this file, use the file path to distinguish
+  between different files in the repository.
+- Be aware that this file may contain sensitive information. Handle it with
+  the same level of security as you would the original repository.
+</usage_guidelines>
+
+<notes>
+- Some files may have been excluded based on .gitignore rules and Repomix's configuration
+- Binary files are not included in this packed representation. Please refer to the Repository Structure section for a complete list of file paths, including binary files
+- Files matching patterns in .gitignore are excluded
+- Files matching default ignore patterns are excluded
+- Files are sorted by Git change count (files with more changes are at the bottom)
+</notes>
+
+</file_summary>
+
+<directory_structure>
+cookie/.git/COMMIT_EDITMSG
+cookie/.git/config
+cookie/.git/description
+cookie/.git/HEAD
+cookie/.git/hooks/applypatch-msg.sample
+cookie/.git/hooks/commit-msg.sample
+cookie/.git/hooks/fsmonitor-watchman.sample
+cookie/.git/hooks/post-update.sample
+cookie/.git/hooks/pre-applypatch.sample
+cookie/.git/hooks/pre-commit.sample
+cookie/.git/hooks/pre-merge-commit.sample
+cookie/.git/hooks/pre-push.sample
+cookie/.git/hooks/pre-rebase.sample
+cookie/.git/hooks/pre-receive.sample
+cookie/.git/hooks/prepare-commit-msg.sample
+cookie/.git/hooks/push-to-checkout.sample
+cookie/.git/hooks/sendemail-validate.sample
+cookie/.git/hooks/update.sample
+cookie/.git/index
+cookie/.git/info/exclude
+cookie/.git/logs/HEAD
+cookie/.git/logs/refs/heads/main
+cookie/.git/objects/2b/5912c28caa98e7dcefe8b527e2cb6afd361e4f
+cookie/.git/objects/5c/f0f3895b4e4e0d22d2b9d5b0eceed82e424c84
+cookie/.git/objects/6b/910e3f64b172dff63712587ba10b8690f93e75
+cookie/.git/objects/8f/710780712d2bac555a7e4efb2df832303ca272
+cookie/.git/objects/ee/9a67eba38811062b37599758b9728362a71940
+cookie/.git/refs/heads/main
+cookie/cookie-tracker-graph/.gitignore
+cookie/cookie-tracker-graph/LICENSE
+cookie/cookie-tracker-graph/main.py
+cookie/cookie-tracker-graph/README.md
+cookie/frontend/.gitignore
+cookie/frontend/AGENTS.md
+cookie/frontend/app/components/ConsentToggle.tsx
+cookie/frontend/app/components/DnaBackground.tsx
+cookie/frontend/app/components/DomainGroupPanel.tsx
+cookie/frontend/app/components/DownloadPanel.tsx
+cookie/frontend/app/components/FilterBar.tsx
+cookie/frontend/app/components/GdeltFeed.tsx
+cookie/frontend/app/components/Header.tsx
+cookie/frontend/app/components/IntelligencePanel.tsx
+cookie/frontend/app/components/NodeDetail.tsx
+cookie/frontend/app/components/PerformanceImpact.tsx
+cookie/frontend/app/components/TrackerGraph.tsx
+cookie/frontend/app/components/WaterfallChart.tsx
+cookie/frontend/app/components/WhyThisMatters.tsx
+cookie/frontend/app/favicon.ico
+cookie/frontend/app/globals.css
+cookie/frontend/app/layout.tsx
+cookie/frontend/app/lib/data.ts
+cookie/frontend/app/lib/types.ts
+cookie/frontend/app/page.tsx
+cookie/frontend/CLAUDE.md
+cookie/frontend/eslint.config.mjs
+cookie/frontend/next.config.ts
+cookie/frontend/package.json
+cookie/frontend/postcss.config.mjs
+cookie/frontend/public/file.svg
+cookie/frontend/public/globe.svg
+cookie/frontend/public/next.svg
+cookie/frontend/public/vercel.svg
+cookie/frontend/public/window.svg
+cookie/frontend/README.md
+cookie/frontend/tsconfig.json
+</directory_structure>
+
+<files>
+This section contains the contents of the repository's files.
+
+<file path="cookie/.git/COMMIT_EDITMSG">
+Cookie tracker upload
+</file>
+
+<file path="cookie/.git/config">
+[core]
+	repositoryformatversion = 0
+	filemode = false
+	bare = false
+	logallrefupdates = true
+	symlinks = false
+	ignorecase = true
+[remote "origin"]
+	url = https://github.com/Sherinjahana736/cookie-tracker-graph.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
+</file>
+
+<file path="cookie/.git/description">
+Unnamed repository; edit this file 'description' to name the repository.
+</file>
+
+<file path="cookie/.git/HEAD">
+ref: refs/heads/main
+</file>
+
+<file path="cookie/.git/hooks/applypatch-msg.sample">
+#!/bin/sh
+#
+# An example hook script to check the commit log message taken by
+# applypatch from an e-mail message.
+#
+# The hook should exit with non-zero status after issuing an
+# appropriate message if it wants to stop the commit.  The hook is
+# allowed to edit the commit message file.
+#
+# To enable this hook, rename this file to "applypatch-msg".
+
+. git-sh-setup
+commitmsg="$(git rev-parse --git-path hooks/commit-msg)"
+test -x "$commitmsg" && exec "$commitmsg" ${1+"$@"}
+:
+</file>
+
+<file path="cookie/.git/hooks/commit-msg.sample">
+#!/bin/sh
+#
+# An example hook script to check the commit log message.
+# Called by "git commit" with one argument, the name of the file
+# that has the commit message.  The hook should exit with non-zero
+# status after issuing an appropriate message if it wants to stop the
+# commit.  The hook is allowed to edit the commit message file.
+#
+# To enable this hook, rename this file to "commit-msg".
+
+# Uncomment the below to add a Signed-off-by line to the message.
+# Doing this in a hook is a bad idea in general, but the prepare-commit-msg
+# hook is more suited to it.
+#
+# SOB=$(git var GIT_AUTHOR_IDENT | sed -n 's/^\(.*>\).*$/Signed-off-by: \1/p')
+# grep -qs "^$SOB" "$1" || echo "$SOB" >> "$1"
+
+# This example catches duplicate Signed-off-by lines.
+
+test "" = "$(grep '^Signed-off-by: ' "$1" |
+	 sort | uniq -c | sed -e '/^[ 	]*1[ 	]/d')" || {
+	echo >&2 Duplicate Signed-off-by lines.
+	exit 1
+}
+</file>
+
+<file path="cookie/.git/hooks/fsmonitor-watchman.sample">
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+use IPC::Open2;
+
+# An example hook script to integrate Watchman
+# (https://facebook.github.io/watchman/) with git to speed up detecting
+# new and modified files.
+#
+# The hook is passed a version (currently 2) and last update token
+# formatted as a string and outputs to stdout a new update token and
+# all files that have been modified since the update token. Paths must
+# be relative to the root of the working tree and separated by a single NUL.
+#
+# To enable this hook, rename this file to "query-watchman" and set
+# 'git config core.fsmonitor .git/hooks/query-watchman'
+#
+my ($version, $last_update_token) = @ARGV;
+
+# Uncomment for debugging
+# print STDERR "$0 $version $last_update_token\n";
+
+# Check the hook interface version
+if ($version ne 2) {
+	die "Unsupported query-fsmonitor hook version '$version'.\n" .
+	    "Falling back to scanning...\n";
+}
+
+my $git_work_tree = get_working_dir();
+
+my $retry = 1;
+
+my $json_pkg;
+eval {
+	require JSON::XS;
+	$json_pkg = "JSON::XS";
+	1;
+} or do {
+	require JSON::PP;
+	$json_pkg = "JSON::PP";
+};
+
+launch_watchman();
+
+sub launch_watchman {
+	my $o = watchman_query();
+	if (is_work_tree_watched($o)) {
+		output_result($o->{clock}, @{$o->{files}});
+	}
+}
+
+sub output_result {
+	my ($clockid, @files) = @_;
+
+	# Uncomment for debugging watchman output
+	# open (my $fh, ">", ".git/watchman-output.out");
+	# binmode $fh, ":utf8";
+	# print $fh "$clockid\n@files\n";
+	# close $fh;
+
+	binmode STDOUT, ":utf8";
+	print $clockid;
+	print "\0";
+	local $, = "\0";
+	print @files;
+}
+
+sub watchman_clock {
+	my $response = qx/watchman clock "$git_work_tree"/;
+	die "Failed to get clock id on '$git_work_tree'.\n" .
+		"Falling back to scanning...\n" if $? != 0;
+
+	return $json_pkg->new->utf8->decode($response);
+}
+
+sub watchman_query {
+	my $pid = open2(\*CHLD_OUT, \*CHLD_IN, 'watchman -j --no-pretty')
+	or die "open2() failed: $!\n" .
+	"Falling back to scanning...\n";
+
+	# In the query expression below we're asking for names of files that
+	# changed since $last_update_token but not from the .git folder.
+	#
+	# To accomplish this, we're using the "since" generator to use the
+	# recency index to select candidate nodes and "fields" to limit the
+	# output to file names only. Then we're using the "expression" term to
+	# further constrain the results.
+	my $last_update_line = "";
+	if (substr($last_update_token, 0, 1) eq "c") {
+		$last_update_token = "\"$last_update_token\"";
+		$last_update_line = qq[\n"since": $last_update_token,];
+	}
+	my $query = <<"	END";
+		["query", "$git_work_tree", {$last_update_line
+			"fields": ["name"],
+			"expression": ["not", ["dirname", ".git"]]
+		}]
+	END
+
+	# Uncomment for debugging the watchman query
+	# open (my $fh, ">", ".git/watchman-query.json");
+	# print $fh $query;
+	# close $fh;
+
+	print CHLD_IN $query;
+	close CHLD_IN;
+	my $response = do {local $/; <CHLD_OUT>};
+
+	# Uncomment for debugging the watch response
+	# open ($fh, ">", ".git/watchman-response.json");
+	# print $fh $response;
+	# close $fh;
+
+	die "Watchman: command returned no output.\n" .
+	"Falling back to scanning...\n" if $response eq "";
+	die "Watchman: command returned invalid output: $response\n" .
+	"Falling back to scanning...\n" unless $response =~ /^\{/;
+
+	return $json_pkg->new->utf8->decode($response);
+}
+
+sub is_work_tree_watched {
+	my ($output) = @_;
+	my $error = $output->{error};
+	if ($retry > 0 and $error and $error =~ m/unable to resolve root .* directory (.*) is not watched/) {
+		$retry--;
+		my $response = qx/watchman watch "$git_work_tree"/;
+		die "Failed to make watchman watch '$git_work_tree'.\n" .
+		    "Falling back to scanning...\n" if $? != 0;
+		$output = $json_pkg->new->utf8->decode($response);
+		$error = $output->{error};
+		die "Watchman: $error.\n" .
+		"Falling back to scanning...\n" if $error;
+
+		# Uncomment for debugging watchman output
+		# open (my $fh, ">", ".git/watchman-output.out");
+		# close $fh;
+
+		# Watchman will always return all files on the first query so
+		# return the fast "everything is dirty" flag to git and do the
+		# Watchman query just to get it over with now so we won't pay
+		# the cost in git to look up each individual file.
+		my $o = watchman_clock();
+		$error = $output->{error};
+
+		die "Watchman: $error.\n" .
+		"Falling back to scanning...\n" if $error;
+
+		output_result($o->{clock}, ("/"));
+		$last_update_token = $o->{clock};
+
+		eval { launch_watchman() };
+		return 0;
+	}
+
+	die "Watchman: $error.\n" .
+	"Falling back to scanning...\n" if $error;
+
+	return 1;
+}
+
+sub get_working_dir {
+	my $working_dir;
+	if ($^O =~ 'msys' || $^O =~ 'cygwin') {
+		$working_dir = Win32::GetCwd();
+		$working_dir =~ tr/\\/\//;
+	} else {
+		require Cwd;
+		$working_dir = Cwd::cwd();
+	}
+
+	return $working_dir;
+}
+</file>
+
+<file path="cookie/.git/hooks/post-update.sample">
+#!/bin/sh
+#
+# An example hook script to prepare a packed repository for use over
+# dumb transports.
+#
+# To enable this hook, rename this file to "post-update".
+
+exec git update-server-info
+</file>
+
+<file path="cookie/.git/hooks/pre-applypatch.sample">
+#!/bin/sh
+#
+# An example hook script to verify what is about to be committed
+# by applypatch from an e-mail message.
+#
+# The hook should exit with non-zero status after issuing an
+# appropriate message if it wants to stop the commit.
+#
+# To enable this hook, rename this file to "pre-applypatch".
+
+. git-sh-setup
+precommit="$(git rev-parse --git-path hooks/pre-commit)"
+test -x "$precommit" && exec "$precommit" ${1+"$@"}
+:
+</file>
+
+<file path="cookie/.git/hooks/pre-commit.sample">
+#!/bin/sh
+#
+# An example hook script to verify what is about to be committed.
+# Called by "git commit" with no arguments.  The hook should
+# exit with non-zero status after issuing an appropriate message if
+# it wants to stop the commit.
+#
+# To enable this hook, rename this file to "pre-commit".
+
+if git rev-parse --verify HEAD >/dev/null 2>&1
+then
+	against=HEAD
+else
+	# Initial commit: diff against an empty tree object
+	against=$(git hash-object -t tree /dev/null)
+fi
+
+# If you want to allow non-ASCII filenames set this variable to true.
+allownonascii=$(git config --type=bool hooks.allownonascii)
+
+# Redirect output to stderr.
+exec 1>&2
+
+# Cross platform projects tend to avoid non-ASCII filenames; prevent
+# them from being added to the repository. We exploit the fact that the
+# printable range starts at the space character and ends with tilde.
+if [ "$allownonascii" != "true" ] &&
+	# Note that the use of brackets around a tr range is ok here, (it's
+	# even required, for portability to Solaris 10's /usr/bin/tr), since
+	# the square bracket bytes happen to fall in the designated range.
+	test $(git diff-index --cached --name-only --diff-filter=A -z $against |
+	  LC_ALL=C tr -d '[ -~]\0' | wc -c) != 0
+then
+	cat <<\EOF
+Error: Attempt to add a non-ASCII file name.
+
+This can cause problems if you want to work with people on other platforms.
+
+To be portable it is advisable to rename the file.
+
+If you know what you are doing you can disable this check using:
+
+  git config hooks.allownonascii true
+EOF
+	exit 1
+fi
+
+# If there are whitespace errors, print the offending file names and fail.
+exec git diff-index --check --cached $against --
+</file>
+
+<file path="cookie/.git/hooks/pre-merge-commit.sample">
+#!/bin/sh
+#
+# An example hook script to verify what is about to be committed.
+# Called by "git merge" with no arguments.  The hook should
+# exit with non-zero status after issuing an appropriate message to
+# stderr if it wants to stop the merge commit.
+#
+# To enable this hook, rename this file to "pre-merge-commit".
+
+. git-sh-setup
+test -x "$GIT_DIR/hooks/pre-commit" &&
+        exec "$GIT_DIR/hooks/pre-commit"
+:
+</file>
+
+<file path="cookie/.git/hooks/pre-push.sample">
+#!/bin/sh
+
+# An example hook script to verify what is about to be pushed.  Called by "git
+# push" after it has checked the remote status, but before anything has been
+# pushed.  If this script exits with a non-zero status nothing will be pushed.
+#
+# This hook is called with the following parameters:
+#
+# $1 -- Name of the remote to which the push is being done
+# $2 -- URL to which the push is being done
+#
+# If pushing without using a named remote those arguments will be equal.
+#
+# Information about the commits which are being pushed is supplied as lines to
+# the standard input in the form:
+#
+#   <local ref> <local oid> <remote ref> <remote oid>
+#
+# This sample shows how to prevent push of commits where the log message starts
+# with "WIP" (work in progress).
+
+remote="$1"
+url="$2"
+
+zero=$(git hash-object --stdin </dev/null | tr '[0-9a-f]' '0')
+
+while read local_ref local_oid remote_ref remote_oid
+do
+	if test "$local_oid" = "$zero"
+	then
+		# Handle delete
+		:
+	else
+		if test "$remote_oid" = "$zero"
+		then
+			# New branch, examine all commits
+			range="$local_oid"
+		else
+			# Update to existing branch, examine new commits
+			range="$remote_oid..$local_oid"
+		fi
+
+		# Check for WIP commit
+		commit=$(git rev-list -n 1 --grep '^WIP' "$range")
+		if test -n "$commit"
+		then
+			echo >&2 "Found WIP commit in $local_ref, not pushing"
+			exit 1
+		fi
+	fi
+done
+
+exit 0
+</file>
+
+<file path="cookie/.git/hooks/pre-rebase.sample">
+#!/bin/sh
+#
+# Copyright (c) 2006, 2008 Junio C Hamano
+#
+# The "pre-rebase" hook is run just before "git rebase" starts doing
+# its job, and can prevent the command from running by exiting with
+# non-zero status.
+#
+# The hook is called with the following parameters:
+#
+# $1 -- the upstream the series was forked from.
+# $2 -- the branch being rebased (or empty when rebasing the current branch).
+#
+# This sample shows how to prevent topic branches that are already
+# merged to 'next' branch from getting rebased, because allowing it
+# would result in rebasing already published history.
+
+publish=next
+basebranch="$1"
+if test "$#" = 2
+then
+	topic="refs/heads/$2"
+else
+	topic=`git symbolic-ref HEAD` ||
+	exit 0 ;# we do not interrupt rebasing detached HEAD
+fi
+
+case "$topic" in
+refs/heads/??/*)
+	;;
+*)
+	exit 0 ;# we do not interrupt others.
+	;;
+esac
+
+# Now we are dealing with a topic branch being rebased
+# on top of master.  Is it OK to rebase it?
+
+# Does the topic really exist?
+git show-ref -q "$topic" || {
+	echo >&2 "No such branch $topic"
+	exit 1
+}
+
+# Is topic fully merged to master?
+not_in_master=`git rev-list --pretty=oneline ^master "$topic"`
+if test -z "$not_in_master"
+then
+	echo >&2 "$topic is fully merged to master; better remove it."
+	exit 1 ;# we could allow it, but there is no point.
+fi
+
+# Is topic ever merged to next?  If so you should not be rebasing it.
+only_next_1=`git rev-list ^master "^$topic" ${publish} | sort`
+only_next_2=`git rev-list ^master           ${publish} | sort`
+if test "$only_next_1" = "$only_next_2"
+then
+	not_in_topic=`git rev-list "^$topic" master`
+	if test -z "$not_in_topic"
+	then
+		echo >&2 "$topic is already up to date with master"
+		exit 1 ;# we could allow it, but there is no point.
+	else
+		exit 0
+	fi
+else
+	not_in_next=`git rev-list --pretty=oneline ^${publish} "$topic"`
+	/usr/bin/perl -e '
+		my $topic = $ARGV[0];
+		my $msg = "* $topic has commits already merged to public branch:\n";
+		my (%not_in_next) = map {
+			/^([0-9a-f]+) /;
+			($1 => 1);
+		} split(/\n/, $ARGV[1]);
+		for my $elem (map {
+				/^([0-9a-f]+) (.*)$/;
+				[$1 => $2];
+			} split(/\n/, $ARGV[2])) {
+			if (!exists $not_in_next{$elem->[0]}) {
+				if ($msg) {
+					print STDERR $msg;
+					undef $msg;
+				}
+				print STDERR " $elem->[1]\n";
+			}
+		}
+	' "$topic" "$not_in_next" "$not_in_master"
+	exit 1
+fi
+
+<<\DOC_END
+
+This sample hook safeguards topic branches that have been
+published from being rewound.
+
+The workflow assumed here is:
+
+ * Once a topic branch forks from "master", "master" is never
+   merged into it again (either directly or indirectly).
+
+ * Once a topic branch is fully cooked and merged into "master",
+   it is deleted.  If you need to build on top of it to correct
+   earlier mistakes, a new topic branch is created by forking at
+   the tip of the "master".  This is not strictly necessary, but
+   it makes it easier to keep your history simple.
+
+ * Whenever you need to test or publish your changes to topic
+   branches, merge them into "next" branch.
+
+The script, being an example, hardcodes the publish branch name
+to be "next", but it is trivial to make it configurable via
+$GIT_DIR/config mechanism.
+
+With this workflow, you would want to know:
+
+(1) ... if a topic branch has ever been merged to "next".  Young
+    topic branches can have stupid mistakes you would rather
+    clean up before publishing, and things that have not been
+    merged into other branches can be easily rebased without
+    affecting other people.  But once it is published, you would
+    not want to rewind it.
+
+(2) ... if a topic branch has been fully merged to "master".
+    Then you can delete it.  More importantly, you should not
+    build on top of it -- other people may already want to
+    change things related to the topic as patches against your
+    "master", so if you need further changes, it is better to
+    fork the topic (perhaps with the same name) afresh from the
+    tip of "master".
+
+Let's look at this example:
+
+		   o---o---o---o---o---o---o---o---o---o "next"
+		  /       /           /           /
+		 /   a---a---b A     /           /
+		/   /               /           /
+	       /   /   c---c---c---c B         /
+	      /   /   /             \         /
+	     /   /   /   b---b C     \       /
+	    /   /   /   /             \     /
+    ---o---o---o---o---o---o---o---o---o---o---o "master"
+
+
+A, B and C are topic branches.
+
+ * A has one fix since it was merged up to "next".
+
+ * B has finished.  It has been fully merged up to "master" and "next",
+   and is ready to be deleted.
+
+ * C has not merged to "next" at all.
+
+We would want to allow C to be rebased, refuse A, and encourage
+B to be deleted.
+
+To compute (1):
+
+	git rev-list ^master ^topic next
+	git rev-list ^master        next
+
+	if these match, topic has not merged in next at all.
+
+To compute (2):
+
+	git rev-list master..topic
+
+	if this is empty, it is fully merged to "master".
+
+DOC_END
+</file>
+
+<file path="cookie/.git/hooks/pre-receive.sample">
+#!/bin/sh
+#
+# An example hook script to make use of push options.
+# The example simply echoes all push options that start with 'echoback='
+# and rejects all pushes when the "reject" push option is used.
+#
+# To enable this hook, rename this file to "pre-receive".
+
+if test -n "$GIT_PUSH_OPTION_COUNT"
+then
+	i=0
+	while test "$i" -lt "$GIT_PUSH_OPTION_COUNT"
+	do
+		eval "value=\$GIT_PUSH_OPTION_$i"
+		case "$value" in
+		echoback=*)
+			echo "echo from the pre-receive-hook: ${value#*=}" >&2
+			;;
+		reject)
+			exit 1
+		esac
+		i=$((i + 1))
+	done
+fi
+</file>
+
+<file path="cookie/.git/hooks/prepare-commit-msg.sample">
+#!/bin/sh
+#
+# An example hook script to prepare the commit log message.
+# Called by "git commit" with the name of the file that has the
+# commit message, followed by the description of the commit
+# message's source.  The hook's purpose is to edit the commit
+# message file.  If the hook fails with a non-zero status,
+# the commit is aborted.
+#
+# To enable this hook, rename this file to "prepare-commit-msg".
+
+# This hook includes three examples. The first one removes the
+# "# Please enter the commit message..." help message.
+#
+# The second includes the output of "git diff --name-status -r"
+# into the message, just before the "git status" output.  It is
+# commented because it doesn't cope with --amend or with squashed
+# commits.
+#
+# The third example adds a Signed-off-by line to the message, that can
+# still be edited.  This is rarely a good idea.
+
+COMMIT_MSG_FILE=$1
+COMMIT_SOURCE=$2
+SHA1=$3
+
+/usr/bin/perl -i.bak -ne 'print unless(m/^. Please enter the commit message/..m/^#$/)' "$COMMIT_MSG_FILE"
+
+# case "$COMMIT_SOURCE,$SHA1" in
+#  ,|template,)
+#    /usr/bin/perl -i.bak -pe '
+#       print "\n" . `git diff --cached --name-status -r`
+# 	 if /^#/ && $first++ == 0' "$COMMIT_MSG_FILE" ;;
+#  *) ;;
+# esac
+
+# SOB=$(git var GIT_COMMITTER_IDENT | sed -n 's/^\(.*>\).*$/Signed-off-by: \1/p')
+# git interpret-trailers --in-place --trailer "$SOB" "$COMMIT_MSG_FILE"
+# if test -z "$COMMIT_SOURCE"
+# then
+#   /usr/bin/perl -i.bak -pe 'print "\n" if !$first_line++' "$COMMIT_MSG_FILE"
+# fi
+</file>
+
+<file path="cookie/.git/hooks/push-to-checkout.sample">
+#!/bin/sh
+
+# An example hook script to update a checked-out tree on a git push.
+#
+# This hook is invoked by git-receive-pack(1) when it reacts to git
+# push and updates reference(s) in its repository, and when the push
+# tries to update the branch that is currently checked out and the
+# receive.denyCurrentBranch configuration variable is set to
+# updateInstead.
+#
+# By default, such a push is refused if the working tree and the index
+# of the remote repository has any difference from the currently
+# checked out commit; when both the working tree and the index match
+# the current commit, they are updated to match the newly pushed tip
+# of the branch. This hook is to be used to override the default
+# behaviour; however the code below reimplements the default behaviour
+# as a starting point for convenient modification.
+#
+# The hook receives the commit with which the tip of the current
+# branch is going to be updated:
+commit=$1
+
+# It can exit with a non-zero status to refuse the push (when it does
+# so, it must not modify the index or the working tree).
+die () {
+	echo >&2 "$*"
+	exit 1
+}
+
+# Or it can make any necessary changes to the working tree and to the
+# index to bring them to the desired state when the tip of the current
+# branch is updated to the new commit, and exit with a zero status.
+#
+# For example, the hook can simply run git read-tree -u -m HEAD "$1"
+# in order to emulate git fetch that is run in the reverse direction
+# with git push, as the two-tree form of git read-tree -u -m is
+# essentially the same as git switch or git checkout that switches
+# branches while keeping the local changes in the working tree that do
+# not interfere with the difference between the branches.
+
+# The below is a more-or-less exact translation to shell of the C code
+# for the default behaviour for git's push-to-checkout hook defined in
+# the push_to_deploy() function in builtin/receive-pack.c.
+#
+# Note that the hook will be executed from the repository directory,
+# not from the working tree, so if you want to perform operations on
+# the working tree, you will have to adapt your code accordingly, e.g.
+# by adding "cd .." or using relative paths.
+
+if ! git update-index -q --ignore-submodules --refresh
+then
+	die "Up-to-date check failed"
+fi
+
+if ! git diff-files --quiet --ignore-submodules --
+then
+	die "Working directory has unstaged changes"
+fi
+
+# This is a rough translation of:
+#
+#   head_has_history() ? "HEAD" : EMPTY_TREE_SHA1_HEX
+if git cat-file -e HEAD 2>/dev/null
+then
+	head=HEAD
+else
+	head=$(git hash-object -t tree --stdin </dev/null)
+fi
+
+if ! git diff-index --quiet --cached --ignore-submodules $head --
+then
+	die "Working directory has staged changes"
+fi
+
+if ! git read-tree -u -m "$commit"
+then
+	die "Could not update working tree to new HEAD"
+fi
+</file>
+
+<file path="cookie/.git/hooks/sendemail-validate.sample">
+#!/bin/sh
+
+# An example hook script to validate a patch (and/or patch series) before
+# sending it via email.
+#
+# The hook should exit with non-zero status after issuing an appropriate
+# message if it wants to prevent the email(s) from being sent.
+#
+# To enable this hook, rename this file to "sendemail-validate".
+#
+# By default, it will only check that the patch(es) can be applied on top of
+# the default upstream branch without conflicts in a secondary worktree. After
+# validation (successful or not) of the last patch of a series, the worktree
+# will be deleted.
+#
+# The following config variables can be set to change the default remote and
+# remote ref that are used to apply the patches against:
+#
+#   sendemail.validateRemote (default: origin)
+#   sendemail.validateRemoteRef (default: HEAD)
+#
+# Replace the TODO placeholders with appropriate checks according to your
+# needs.
+
+validate_cover_letter () {
+	file="$1"
+	# TODO: Replace with appropriate checks (e.g. spell checking).
+	true
+}
+
+validate_patch () {
+	file="$1"
+	# Ensure that the patch applies without conflicts.
+	git am -3 "$file" || return
+	# TODO: Replace with appropriate checks for this patch
+	# (e.g. checkpatch.pl).
+	true
+}
+
+validate_series () {
+	# TODO: Replace with appropriate checks for the whole series
+	# (e.g. quick build, coding style checks, etc.).
+	true
+}
+
+# main -------------------------------------------------------------------------
+
+if test "$GIT_SENDEMAIL_FILE_COUNTER" = 1
+then
+	remote=$(git config --default origin --get sendemail.validateRemote) &&
+	ref=$(git config --default HEAD --get sendemail.validateRemoteRef) &&
+	worktree=$(mktemp --tmpdir -d sendemail-validate.XXXXXXX) &&
+	git worktree add -fd --checkout "$worktree" "refs/remotes/$remote/$ref" &&
+	git config --replace-all sendemail.validateWorktree "$worktree"
+else
+	worktree=$(git config --get sendemail.validateWorktree)
+fi || {
+	echo "sendemail-validate: error: failed to prepare worktree" >&2
+	exit 1
+}
+
+unset GIT_DIR GIT_WORK_TREE
+cd "$worktree" &&
+
+if grep -q "^diff --git " "$1"
+then
+	validate_patch "$1"
+else
+	validate_cover_letter "$1"
+fi &&
+
+if test "$GIT_SENDEMAIL_FILE_COUNTER" = "$GIT_SENDEMAIL_FILE_TOTAL"
+then
+	git config --unset-all sendemail.validateWorktree &&
+	trap 'git worktree remove -ff "$worktree"' EXIT &&
+	validate_series
+fi
+</file>
+
+<file path="cookie/.git/hooks/update.sample">
+#!/bin/sh
+#
+# An example hook script to block unannotated tags from entering.
+# Called by "git receive-pack" with arguments: refname sha1-old sha1-new
+#
+# To enable this hook, rename this file to "update".
+#
+# Config
+# ------
+# hooks.allowunannotated
+#   This boolean sets whether unannotated tags will be allowed into the
+#   repository.  By default they won't be.
+# hooks.allowdeletetag
+#   This boolean sets whether deleting tags will be allowed in the
+#   repository.  By default they won't be.
+# hooks.allowmodifytag
+#   This boolean sets whether a tag may be modified after creation. By default
+#   it won't be.
+# hooks.allowdeletebranch
+#   This boolean sets whether deleting branches will be allowed in the
+#   repository.  By default they won't be.
+# hooks.denycreatebranch
+#   This boolean sets whether remotely creating branches will be denied
+#   in the repository.  By default this is allowed.
+#
+
+# --- Command line
+refname="$1"
+oldrev="$2"
+newrev="$3"
+
+# --- Safety check
+if [ -z "$GIT_DIR" ]; then
+	echo "Don't run this script from the command line." >&2
+	echo " (if you want, you could supply GIT_DIR then run" >&2
+	echo "  $0 <ref> <oldrev> <newrev>)" >&2
+	exit 1
+fi
+
+if [ -z "$refname" -o -z "$oldrev" -o -z "$newrev" ]; then
+	echo "usage: $0 <ref> <oldrev> <newrev>" >&2
+	exit 1
+fi
+
+# --- Config
+allowunannotated=$(git config --type=bool hooks.allowunannotated)
+allowdeletebranch=$(git config --type=bool hooks.allowdeletebranch)
+denycreatebranch=$(git config --type=bool hooks.denycreatebranch)
+allowdeletetag=$(git config --type=bool hooks.allowdeletetag)
+allowmodifytag=$(git config --type=bool hooks.allowmodifytag)
+
+# check for no description
+projectdesc=$(sed -e '1q' "$GIT_DIR/description")
+case "$projectdesc" in
+"Unnamed repository"* | "")
+	echo "*** Project description file hasn't been set" >&2
+	exit 1
+	;;
+esac
+
+# --- Check types
+# if $newrev is 0000...0000, it's a commit to delete a ref.
+zero=$(git hash-object --stdin </dev/null | tr '[0-9a-f]' '0')
+if [ "$newrev" = "$zero" ]; then
+	newrev_type=delete
+else
+	newrev_type=$(git cat-file -t $newrev)
+fi
+
+case "$refname","$newrev_type" in
+	refs/tags/*,commit)
+		# un-annotated tag
+		short_refname=${refname##refs/tags/}
+		if [ "$allowunannotated" != "true" ]; then
+			echo "*** The un-annotated tag, $short_refname, is not allowed in this repository" >&2
+			echo "*** Use 'git tag [ -a | -s ]' for tags you want to propagate." >&2
+			exit 1
+		fi
+		;;
+	refs/tags/*,delete)
+		# delete tag
+		if [ "$allowdeletetag" != "true" ]; then
+			echo "*** Deleting a tag is not allowed in this repository" >&2
+			exit 1
+		fi
+		;;
+	refs/tags/*,tag)
+		# annotated tag
+		if [ "$allowmodifytag" != "true" ] && git rev-parse $refname > /dev/null 2>&1
+		then
+			echo "*** Tag '$refname' already exists." >&2
+			echo "*** Modifying a tag is not allowed in this repository." >&2
+			exit 1
+		fi
+		;;
+	refs/heads/*,commit)
+		# branch
+		if [ "$oldrev" = "$zero" -a "$denycreatebranch" = "true" ]; then
+			echo "*** Creating a branch is not allowed in this repository" >&2
+			exit 1
+		fi
+		;;
+	refs/heads/*,delete)
+		# delete branch
+		if [ "$allowdeletebranch" != "true" ]; then
+			echo "*** Deleting a branch is not allowed in this repository" >&2
+			exit 1
+		fi
+		;;
+	refs/remotes/*,commit)
+		# tracking branch
+		;;
+	refs/remotes/*,delete)
+		# delete tracking branch
+		if [ "$allowdeletebranch" != "true" ]; then
+			echo "*** Deleting a tracking branch is not allowed in this repository" >&2
+			exit 1
+		fi
+		;;
+	*)
+		# Anything else (is there anything else?)
+		echo "*** Update hook: unknown type of update to ref $refname of type $newrev_type" >&2
+		exit 1
+		;;
+esac
+
+# --- Finished
+exit 0
+</file>
+
+<file path="cookie/.git/info/exclude">
+# git ls-files --others --exclude-from=.git/info/exclude
+# Lines that start with '#' are comments.
+# For a project mostly in C, the following would be a good set of
+# exclude patterns (uncomment them if you want to use them):
+# *.[oa]
+# *~
+</file>
+
+<file path="cookie/.git/logs/HEAD">
+0000000000000000000000000000000000000000 2b5912c28caa98e7dcefe8b527e2cb6afd361e4f dev-bunk <info@devbunk.in> 1777873932 +0530	commit (initial): Cookie tracker initial upload
+2b5912c28caa98e7dcefe8b527e2cb6afd361e4f 0000000000000000000000000000000000000000 dev-bunk <info@devbunk.in> 1777873942 +0530	Branch: renamed refs/heads/master to refs/heads/main
+0000000000000000000000000000000000000000 2b5912c28caa98e7dcefe8b527e2cb6afd361e4f dev-bunk <info@devbunk.in> 1777873942 +0530	Branch: renamed refs/heads/master to refs/heads/main
+</file>
+
+<file path="cookie/.git/logs/refs/heads/main">
+0000000000000000000000000000000000000000 2b5912c28caa98e7dcefe8b527e2cb6afd361e4f dev-bunk <info@devbunk.in> 1777873932 +0530	commit (initial): Cookie tracker initial upload
+2b5912c28caa98e7dcefe8b527e2cb6afd361e4f 2b5912c28caa98e7dcefe8b527e2cb6afd361e4f dev-bunk <info@devbunk.in> 1777873942 +0530	Branch: renamed refs/heads/master to refs/heads/main
+</file>
+
+<file path="cookie/.git/refs/heads/main">
+2b5912c28caa98e7dcefe8b527e2cb6afd361e4f
+</file>
+
+<file path="cookie/cookie-tracker-graph/.gitignore">
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[codz]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+#   Usually these files are written by a python script from a template
+#   before PyInstaller builds the exe, so as to inject date/other infos into it.
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py.cover
+.hypothesis/
+.pytest_cache/
+cover/
+
+# Translations
+*.mo
+*.pot
+
+# Django stuff:
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+
+# Flask stuff:
+instance/
+.webassets-cache
+
+# Scrapy stuff:
+.scrapy
+
+# Sphinx documentation
+docs/_build/
+
+# PyBuilder
+.pybuilder/
+target/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IPython
+profile_default/
+ipython_config.py
+
+# pyenv
+#   For a library or package, you might want to ignore these files since the code is
+#   intended to run in multiple environments; otherwise, check them in:
+# .python-version
+
+# pipenv
+#   According to pypa/pipenv#598, it is recommended to include Pipfile.lock in version control.
+#   However, in case of collaboration, if having platform-specific dependencies or dependencies
+#   having no cross-platform support, pipenv may install dependencies that don't work, or not
+#   install all needed dependencies.
+# Pipfile.lock
+
+# UV
+#   Similar to Pipfile.lock, it is generally recommended to include uv.lock in version control.
+#   This is especially recommended for binary packages to ensure reproducibility, and is more
+#   commonly ignored for libraries.
+# uv.lock
+
+# poetry
+#   Similar to Pipfile.lock, it is generally recommended to include poetry.lock in version control.
+#   This is especially recommended for binary packages to ensure reproducibility, and is more
+#   commonly ignored for libraries.
+#   https://python-poetry.org/docs/basic-usage/#commit-your-poetrylock-file-to-version-control
+# poetry.lock
+# poetry.toml
+
+# pdm
+#   Similar to Pipfile.lock, it is generally recommended to include pdm.lock in version control.
+#   pdm recommends including project-wide configuration in pdm.toml, but excluding .pdm-python.
+#   https://pdm-project.org/en/latest/usage/project/#working-with-version-control
+# pdm.lock
+# pdm.toml
+.pdm-python
+.pdm-build/
+
+# pixi
+#   Similar to Pipfile.lock, it is generally recommended to include pixi.lock in version control.
+# pixi.lock
+#   Pixi creates a virtual environment in the .pixi directory, just like venv module creates one
+#   in the .venv directory. It is recommended not to include this directory in version control.
+.pixi
+
+# PEP 582; used by e.g. github.com/David-OConnor/pyflow and github.com/pdm-project/pdm
+__pypackages__/
+
+# Celery stuff
+celerybeat-schedule
+celerybeat.pid
+
+# Redis
+*.rdb
+*.aof
+*.pid
+
+# RabbitMQ
+mnesia/
+rabbitmq/
+rabbitmq-data/
+
+# ActiveMQ
+activemq-data/
+
+# SageMath parsed files
+*.sage.py
+
+# Environments
+.env
+.envrc
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Spyder project settings
+.spyderproject
+.spyproject
+
+# Rope project settings
+.ropeproject
+
+# mkdocs documentation
+/site
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+# pytype static type analyzer
+.pytype/
+
+# Cython debug symbols
+cython_debug/
+
+# PyCharm
+#   JetBrains specific template is maintained in a separate JetBrains.gitignore that can
+#   be found at https://github.com/github/gitignore/blob/main/Global/JetBrains.gitignore
+#   and can be added to the global gitignore or merged into this file.  For a more nuclear
+#   option (not recommended) you can uncomment the following to ignore the entire idea folder.
+# .idea/
+
+# Abstra
+#   Abstra is an AI-powered process automation framework.
+#   Ignore directories containing user credentials, local state, and settings.
+#   Learn more at https://abstra.io/docs
+.abstra/
+
+# Visual Studio Code
+#   Visual Studio Code specific template is maintained in a separate VisualStudioCode.gitignore 
+#   that can be found at https://github.com/github/gitignore/blob/main/Global/VisualStudioCode.gitignore
+#   and can be added to the global gitignore or merged into this file. However, if you prefer, 
+#   you could uncomment the following to ignore the entire vscode folder
+# .vscode/
+# Temporary file for partial code execution
+tempCodeRunnerFile.py
+
+# Ruff stuff:
+.ruff_cache/
+
+# PyPI configuration file
+.pypirc
+
+# Marimo
+marimo/_static/
+marimo/_lsp/
+__marimo__/
+
+# Streamlit
+.streamlit/secrets.toml
+# Database files (if you are collecting cookie data locally)
+*.db
+*.sqlite3
+storage/
+
+# Chrome/Browser Driver files (if using Selenium/Playwright)
+chromedriver
+geckodriver
+.web-drivers/
+
+# Logs & Screenshots (if your tracker captures visual data)
+logs/
+screenshots/
+*.log
+
+# Sensitive environment variables
+.env
+secret_key.txt
+
+# OS generated files
+.DS_Store
+Thumbs.db
+</file>
+
+<file path="cookie/cookie-tracker-graph/LICENSE">
+MIT License
+
+Copyright (c) 2026 Sherinjahana736
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+</file>
+
+<file path="cookie/cookie-tracker-graph/main.py">
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+import uvicorn
+from datetime import datetime
+import json
+
+app = FastAPI(
+    title="Cookie Tracker Graph API",
+    description="ETL backend for the Cookie Tracker Graph — Real Rails Intelligence Library",
+    version="1.0.0",
+)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+# ── Synthetic tracker data mirroring frontend dataset ──
+
+TRACKER_NODES = [
+    {"id": "origin", "label": "news-portal.com", "type": "origin", "domain": "news-portal.com", "group": "Publisher", "cookieCount": 2, "latencyMs": 45, "sizeKb": 312, "consentRequired": False},
+    {"id": "fp_cdn", "label": "CDN Assets", "type": "cdn", "domain": "cdn.news-portal.com", "group": "Publisher", "cookieCount": 0, "latencyMs": 12, "sizeKb": 890, "consentRequired": False},
+    {"id": "fp_api", "label": "Content API", "type": "first-party", "domain": "api.news-portal.com", "group": "Publisher", "cookieCount": 1, "latencyMs": 85, "sizeKb": 44, "consentRequired": False},
+    {"id": "ga4", "label": "Google Analytics 4", "type": "analytics", "domain": "analytics.google.com", "group": "Google", "cookieCount": 4, "latencyMs": 120, "sizeKb": 78, "consentRequired": True},
+    {"id": "gtm", "label": "Google Tag Manager", "type": "tracker", "domain": "googletagmanager.com", "group": "Google", "cookieCount": 2, "latencyMs": 95, "sizeKb": 112, "consentRequired": True},
+    {"id": "gads", "label": "Google Ads", "type": "ad-network", "domain": "googlesyndication.com", "group": "Google", "cookieCount": 6, "latencyMs": 210, "sizeKb": 156, "consentRequired": True},
+    {"id": "g_dcm", "label": "DoubleClick", "type": "ad-network", "domain": "doubleclick.net", "group": "Google", "cookieCount": 8, "latencyMs": 180, "sizeKb": 42, "consentRequired": True},
+    {"id": "fb_pixel", "label": "Meta Pixel", "type": "tracker", "domain": "connect.facebook.net", "group": "Meta", "cookieCount": 5, "latencyMs": 165, "sizeKb": 88, "consentRequired": True},
+    {"id": "fb_audience", "label": "Audience Network", "type": "ad-network", "domain": "an.facebook.com", "group": "Meta", "cookieCount": 3, "latencyMs": 190, "sizeKb": 34, "consentRequired": True},
+    {"id": "amzn_ads", "label": "Amazon Ads", "type": "ad-network", "domain": "amazon-adsystem.com", "group": "Amazon", "cookieCount": 4, "latencyMs": 145, "sizeKb": 62, "consentRequired": True},
+    {"id": "oracle_data", "label": "Oracle Data Cloud", "type": "broker", "domain": "bluekai.com", "group": "Oracle", "cookieCount": 7, "latencyMs": 230, "sizeKb": 28, "consentRequired": True},
+    {"id": "lotame", "label": "Lotame DMP", "type": "broker", "domain": "crwdcntrl.net", "group": "Lotame", "cookieCount": 5, "latencyMs": 195, "sizeKb": 22, "consentRequired": True},
+    {"id": "twitter_pixel", "label": "X/Twitter Pixel", "type": "social", "domain": "analytics.twitter.com", "group": "X/Twitter", "cookieCount": 3, "latencyMs": 140, "sizeKb": 46, "consentRequired": True},
+    {"id": "hotjar", "label": "Hotjar", "type": "analytics", "domain": "hotjar.com", "group": "Hotjar", "cookieCount": 3, "latencyMs": 175, "sizeKb": 94, "consentRequired": True},
+    {"id": "criteo", "label": "Criteo Retargeting", "type": "ad-network", "domain": "criteo.com", "group": "Criteo", "cookieCount": 6, "latencyMs": 200, "sizeKb": 38, "consentRequired": True},
+    {"id": "tiktok", "label": "TikTok Pixel", "type": "social", "domain": "analytics.tiktok.com", "group": "TikTok", "cookieCount": 3, "latencyMs": 155, "sizeKb": 52, "consentRequired": True},
+]
+
+TRACKER_EDGES = [
+    {"source": "origin", "target": "fp_cdn", "dataFlow": "Static assets", "crossOrigin": False},
+    {"source": "origin", "target": "fp_api", "dataFlow": "Content & auth", "crossOrigin": False},
+    {"source": "origin", "target": "ga4", "dataFlow": "Analytics events", "crossOrigin": True},
+    {"source": "origin", "target": "gtm", "dataFlow": "Tag configuration", "crossOrigin": True},
+    {"source": "origin", "target": "fb_pixel", "dataFlow": "Pixel events", "crossOrigin": True},
+    {"source": "gtm", "target": "gads", "dataFlow": "Ad conversion data", "crossOrigin": True},
+    {"source": "gtm", "target": "amzn_ads", "dataFlow": "Shopping intent", "crossOrigin": True},
+    {"source": "gtm", "target": "twitter_pixel", "dataFlow": "Social events", "crossOrigin": True},
+    {"source": "gtm", "target": "hotjar", "dataFlow": "Session data", "crossOrigin": True},
+    {"source": "gtm", "target": "criteo", "dataFlow": "Retargeting events", "crossOrigin": True},
+    {"source": "gtm", "target": "tiktok", "dataFlow": "Engagement events", "crossOrigin": True},
+    {"source": "gads", "target": "g_dcm", "dataFlow": "Bid requests + user ID", "crossOrigin": True},
+    {"source": "fb_pixel", "target": "fb_audience", "dataFlow": "Audience segments", "crossOrigin": True},
+    {"source": "g_dcm", "target": "oracle_data", "dataFlow": "Cross-device ID graph", "crossOrigin": True},
+    {"source": "gads", "target": "lotame", "dataFlow": "Behavioral segments", "crossOrigin": True},
+    {"source": "criteo", "target": "lotame", "dataFlow": "Product interest data", "crossOrigin": True},
+]
+
+
+@app.get("/")
+def root():
+    return {
+        "service": "Cookie Tracker Graph API",
+        "version": "1.0.0",
+        "rail": "Distribution & Demand",
+        "endpoints": ["/graph-data", "/waterfall", "/gdelt-events", "/domain-groups"],
+    }
+
+
+@app.get("/graph-data")
+def get_graph():
+    return {"nodes": TRACKER_NODES, "edges": TRACKER_EDGES}
+
+
+@app.get("/waterfall")
+def get_waterfall(consent: bool = True):
+    base = [
+        {"id": "origin", "label": "news-portal.com", "type": "origin", "startMs": 0, "durationMs": 45, "sizeKb": 312, "status": 200, "method": "GET"},
+        {"id": "fp_cdn", "label": "cdn.news-portal.com/assets", "type": "cdn", "startMs": 50, "durationMs": 12, "sizeKb": 890, "status": 200, "method": "GET"},
+        {"id": "fp_api", "label": "api.news-portal.com/v2/articles", "type": "first-party", "startMs": 55, "durationMs": 85, "sizeKb": 44, "status": 200, "method": "GET"},
+    ]
+    if consent:
+        base.extend([
+            {"id": "gtm", "label": "googletagmanager.com/gtm.js", "type": "tracker", "startMs": 95, "durationMs": 95, "sizeKb": 112, "status": 200, "method": "GET"},
+            {"id": "ga4", "label": "analytics.google.com/collect", "type": "analytics", "startMs": 100, "durationMs": 120, "sizeKb": 78, "status": 204, "method": "POST"},
+            {"id": "fb_pixel", "label": "connect.facebook.net/fbevents.js", "type": "tracker", "startMs": 140, "durationMs": 165, "sizeKb": 88, "status": 200, "method": "GET"},
+        ])
+    return {"entries": base, "consent": consent, "timestamp": datetime.utcnow().isoformat()}
+
+
+@app.get("/gdelt-events")
+def get_gdelt_events():
+    return {
+        "source": "GDELT (synthetic)",
+        "note": "Well-labeled synthetic data based on real GDELT event themes",
+        "events": [
+            {"id": "gdelt_001", "date": "2026-05-03", "title": "EU Regulators Fine Meta €1.2B Over Cross-Border Data Transfers", "tone": -4.2, "theme": "REGULATION"},
+            {"id": "gdelt_002", "date": "2026-05-02", "title": "Google Delays Third-Party Cookie Deprecation to 2027", "tone": -2.1, "theme": "INDUSTRY_SHIFT"},
+            {"id": "gdelt_003", "date": "2026-04-29", "title": "Apple Expands ATT to Safari Extensions", "tone": 1.8, "theme": "PLATFORM_POLICY"},
+        ],
+    }
+
+
+@app.get("/domain-groups")
+def get_domain_groups():
+    return {
+        "groups": [
+            {"name": "Google", "trackerCount": 4, "cookieCount": 20, "marketShare": "28.6%"},
+            {"name": "Meta", "trackerCount": 2, "cookieCount": 8, "marketShare": "20.1%"},
+            {"name": "Amazon", "trackerCount": 1, "cookieCount": 4, "marketShare": "12.4%"},
+            {"name": "Oracle", "trackerCount": 1, "cookieCount": 7, "marketShare": "Largest 3P data provider"},
+        ]
+    }
+
+
+if __name__ == "__main__":
+    uvicorn.run("main:app", host="127.0.0.1", port=8000, reload=True)
+</file>
+
+<file path="cookie/cookie-tracker-graph/README.md">
+# cookie-tracker-graph
+An interactive visualization tool that maps real-time web trackers and cookies. By representing third-party data sharing as a dynamic node-graph, this project exposes hidden connections and enhances user privacy awareness.
+</file>
+
+<file path="cookie/frontend/.gitignore">
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# env files (can opt-in for committing if needed)
+.env*
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+</file>
+
+<file path="cookie/frontend/AGENTS.md">
+<!-- BEGIN:nextjs-agent-rules -->
+# This is NOT the Next.js you know
+
+This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` before writing any code. Heed deprecation notices.
+<!-- END:nextjs-agent-rules -->
+</file>
+
+<file path="cookie/frontend/app/components/ConsentToggle.tsx">
+'use client';
+
+import React from 'react';
+import type { ConsentState } from '../lib/types';
+
+interface ConsentToggleProps {
+  consent: ConsentState;
+  onChange: (consent: ConsentState) => void;
+}
+
+const categories = [
+  { key: 'necessary' as const, label: 'Necessary', description: 'Required for basic site functionality', locked: true },
+  { key: 'analytics' as const, label: 'Analytics', description: 'Usage tracking & heatmaps', locked: false },
+  { key: 'marketing' as const, label: 'Marketing', description: 'Ads, retargeting & data brokers', locked: false },
+  { key: 'social' as const, label: 'Social', description: 'Social media pixels & sharing', locked: false },
+];
+
+export default function ConsentToggle({ consent, onChange }: ConsentToggleProps) {
+  const handleToggle = (key: keyof ConsentState) => {
+    if (key === 'necessary') return;
+    onChange({ ...consent, [key]: !consent[key] });
+  };
+
+  const handleAcceptAll = () => {
+    onChange({ necessary: true, analytics: true, marketing: true, social: true, thirdParty: true });
+  };
+
+  const handleRejectAll = () => {
+    onChange({ necessary: true, analytics: false, marketing: false, social: false, thirdParty: false });
+  };
+
+  return (
+    <div className="glass-card" style={{ padding: '20px' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
+        <h3 className="section-title" style={{ margin: 0 }}>Consent Simulation</h3>
+        <div style={{ display: 'flex', gap: '6px' }}>
+          <button
+            onClick={handleAcceptAll}
+            style={{
+              padding: '4px 10px',
+              fontSize: '10px',
+              fontWeight: 600,
+              textTransform: 'uppercase',
+              letterSpacing: '0.04em',
+              background: 'rgba(16, 185, 129, 0.15)',
+              color: '#34d399',
+              border: '1px solid rgba(16, 185, 129, 0.25)',
+              borderRadius: '6px',
+              cursor: 'pointer',
+              transition: 'all 0.2s',
+            }}
+          >
+            Accept All
+          </button>
+          <button
+            onClick={handleRejectAll}
+            style={{
+              padding: '4px 10px',
+              fontSize: '10px',
+              fontWeight: 600,
+              textTransform: 'uppercase',
+              letterSpacing: '0.04em',
+              background: 'rgba(244, 63, 94, 0.15)',
+              color: '#fb7185',
+              border: '1px solid rgba(244, 63, 94, 0.25)',
+              borderRadius: '6px',
+              cursor: 'pointer',
+              transition: 'all 0.2s',
+            }}
+          >
+            Reject All
+          </button>
+        </div>
+      </div>
+
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+        {categories.map((cat) => (
+          <div
+            key={cat.key}
+            onClick={() => handleToggle(cat.key)}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              padding: '10px 12px',
+              background: 'rgba(255,255,255,0.02)',
+              borderRadius: '8px',
+              cursor: cat.locked ? 'not-allowed' : 'pointer',
+              opacity: cat.locked ? 0.6 : 1,
+              transition: 'background 0.15s',
+            }}
+          >
+            <div>
+              <div style={{ fontSize: '13px', fontWeight: 600, color: 'var(--text-primary)' }}>
+                {cat.label}
+                {cat.locked && (
+                  <span style={{ fontSize: '9px', color: 'var(--text-muted)', marginLeft: '6px' }}>
+                    ALWAYS ON
+                  </span>
+                )}
+              </div>
+              <div style={{ fontSize: '11px', color: 'var(--text-muted)', marginTop: '2px' }}>
+                {cat.description}
+              </div>
+            </div>
+            <div
+              className={`toggle-switch ${consent[cat.key] ? 'active' : ''}`}
+              style={{ pointerEvents: cat.locked ? 'none' : 'auto' }}
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+</file>
+
+<file path="cookie/frontend/app/components/DnaBackground.tsx">
+'use client';
+
+import React, { useEffect, useRef } from 'react';
+
+export default function DnaBackground() {
+  const canvasRef = useRef<HTMLCanvasElement | null>(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    let animationId: number;
+    let width = (canvas.width = window.innerWidth);
+    let height = (canvas.height = window.innerHeight);
+
+    const handleResize = () => {
+      if (!canvas) return;
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    // Double helix definition
+    interface Helix {
+      centerX: number;
+      centerY: number;
+      length: number;
+      angle: number; // orientation angle
+      amplitude: number;
+      frequency: number; // wave count
+      speed: number;
+      dotColor: string;
+      lineColor: string;
+    }
+
+    const helices: Helix[] = [
+      {
+        centerX: width * 0.25,
+        centerY: height * 0.5,
+        length: Math.max(height * 0.8, 600),
+        angle: -Math.PI / 6, // slanted
+        amplitude: 65,
+        frequency: 2.2,
+        speed: 0.006,
+        dotColor: 'rgba(167, 139, 250, 0.07)', // faint lavender
+        lineColor: 'rgba(139, 92, 246, 0.03)', // faint violet
+      },
+      {
+        centerX: width * 0.8,
+        centerY: height * 0.4,
+        length: Math.max(height * 0.7, 500),
+        angle: Math.PI / 8, // slanted the other way
+        amplitude: 45,
+        frequency: 2.8,
+        speed: -0.008, // rotates opposite direction
+        dotColor: 'rgba(99, 102, 241, 0.05)',  // faint indigo
+        lineColor: 'rgba(99, 102, 241, 0.02)', // faint indigo
+      }
+    ];
+
+    let rotation = 0;
+
+    const render = () => {
+      ctx.clearRect(0, 0, width, height);
+
+      // Render custom grid/mesh structure for "DNA digital matrix" feel
+      ctx.strokeStyle = 'rgba(167, 139, 250, 0.01)';
+      ctx.lineWidth = 1;
+      const gridSize = 80;
+      for (let x = 0; x < width; x += gridSize) {
+        ctx.beginPath();
+        ctx.moveTo(x, 0);
+        ctx.lineTo(x, height);
+        ctx.stroke();
+      }
+      for (let y = 0; y < height; y += gridSize) {
+        ctx.beginPath();
+        ctx.moveTo(0, y);
+        ctx.lineTo(width, y);
+        ctx.stroke();
+      }
+
+      rotation += 0.01;
+
+      helices.forEach((helix) => {
+        // Adjust center positions on resize
+        if (helix.centerX > width) helix.centerX = width * 0.8;
+        
+        const numPoints = 35;
+        const localRot = rotation * helix.speed * 100;
+
+        for (let i = 0; i < numPoints; i++) {
+          const t = i / (numPoints - 1);
+          // Position along the length of the helix (-length/2 to length/2)
+          const dist = (t - 0.5) * helix.length;
+
+          // Compute wave phase angle
+          const phase = t * helix.frequency * Math.PI * 2 + localRot;
+
+          // 3D-like coordinate offsets (Y' is along helix length, X' and Z' represent rotation around the axis)
+          const xOffset1 = Math.cos(phase) * helix.amplitude;
+          const z1 = Math.sin(phase) * helix.amplitude; // depth for sizing/shading
+
+          const xOffset2 = Math.cos(phase + Math.PI) * helix.amplitude;
+          const z2 = Math.sin(phase + Math.PI) * helix.amplitude;
+
+          // Project coordinates to screen space taking helix angle into account
+          const cosAngle = Math.cos(helix.angle);
+          const sinAngle = Math.sin(helix.angle);
+
+          // Strand 1 screen coordinates
+          const s1x = helix.centerX + dist * cosAngle - xOffset1 * sinAngle;
+          const s1y = helix.centerY + dist * sinAngle + xOffset1 * cosAngle;
+
+          // Strand 2 screen coordinates
+          const s2x = helix.centerX + dist * cosAngle - xOffset2 * sinAngle;
+          const s2y = helix.centerY + dist * sinAngle + xOffset2 * cosAngle;
+
+          // Draw the connecting rung (line between strands)
+          const alphaFactor = (z1 + helix.amplitude) / (2 * helix.amplitude); // 0 to 1 based on depth
+          ctx.strokeStyle = helix.lineColor;
+          ctx.lineWidth = 0.8 + alphaFactor * 0.8;
+          ctx.beginPath();
+          ctx.moveTo(s1x, s1y);
+          ctx.lineTo(s2x, s2y);
+          ctx.stroke();
+
+          // Draw node 1
+          const size1 = 1.5 + alphaFactor * 2.5; // larger when in front
+          ctx.fillStyle = helix.dotColor;
+          ctx.beginPath();
+          ctx.arc(s1x, s1y, size1, 0, Math.PI * 2);
+          ctx.fill();
+
+          // Draw node 2
+          const size2 = 1.5 + (1 - alphaFactor) * 2.5;
+          ctx.beginPath();
+          ctx.arc(s2x, s2y, size2, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      });
+
+      animationId = requestAnimationFrame(render);
+    };
+
+    render();
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      cancelAnimationFrame(animationId);
+    };
+  }, []);
+
+  return (
+    <canvas
+      ref={canvasRef}
+      style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        width: '100vw',
+        height: '100vh',
+        pointerEvents: 'none',
+        zIndex: 0,
+      }}
+    />
+  );
+}
+</file>
+
+<file path="cookie/frontend/app/components/DomainGroupPanel.tsx">
+'use client';
+
+import React from 'react';
+import { domainGroups, getGroupColor } from '../lib/data';
+
+export default function DomainGroupPanel() {
+  return (
+    <div className="glass-card" style={{ padding: '20px' }}>
+      <h3 className="section-title">Who Controls the Rail</h3>
+      <p style={{ fontSize: 12, color: 'var(--text-muted)', marginBottom: 14, lineHeight: 1.5 }}>
+        A handful of companies control the infrastructure that harvests, moves, and monetizes user attention data across the open web.
+      </p>
+
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+        {domainGroups.map((g) => {
+          const color = getGroupColor(g.name) || g.color;
+          return (
+            <div key={g.name} style={{ padding: '12px', background: `${color}08`, border: `1px solid ${color}20`, borderRadius: 10, transition: 'all 0.2s' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 6 }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                  <div style={{ width: 8, height: 8, borderRadius: '50%', background: color, boxShadow: `0 0 6px ${color}40` }} />
+                  <span style={{ fontSize: 13, fontWeight: 700, color: 'var(--text-primary)' }}>{g.name}</span>
+                </div>
+                <span style={{ fontSize: 11, color: 'var(--text-muted)', fontFamily: 'var(--font-mono)' }}>
+                  {g.trackerCount} trackers · {g.cookieCount} cookies
+                </span>
+              </div>
+              <div style={{ fontSize: 11, color: 'var(--text-secondary)', marginBottom: 4 }}>{g.revenueModel}</div>
+              <div style={{ fontSize: 10, color: 'var(--text-muted)' }}>{g.marketShare}</div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+</file>
+
+<file path="cookie/frontend/app/components/DownloadPanel.tsx">
+'use client';
+
+import React from 'react';
+import { trackerNodes, trackerEdges, downloadJSON, downloadCSV } from '../lib/data';
+import type { WaterfallEntry } from '../lib/types';
+
+interface Props {
+  waterfall: WaterfallEntry[];
+}
+
+export default function DownloadPanel({ waterfall }: Props) {
+  const datasets = [
+    {
+      label: 'Tracker Nodes',
+      desc: 'All 17 tracker/node entries',
+      format: 'JSON',
+      action: () => downloadJSON(trackerNodes, 'cookie_tracker_nodes.json'),
+    },
+    {
+      label: 'Tracker Edges',
+      desc: 'Data flow connections',
+      format: 'JSON',
+      action: () => downloadJSON(trackerEdges, 'cookie_tracker_edges.json'),
+    },
+    {
+      label: 'Waterfall Data',
+      desc: 'Request timing waterfall',
+      format: 'CSV',
+      action: () => downloadCSV(
+        waterfall.map((w) => ({ ...w })),
+        'cookie_tracker_waterfall.csv'
+      ),
+    },
+    {
+      label: 'Full Dataset',
+      desc: 'Complete graph + metadata',
+      format: 'JSON',
+      action: () => downloadJSON({ nodes: trackerNodes, edges: trackerEdges, waterfall }, 'cookie_tracker_full.json'),
+    },
+  ];
+
+  return (
+    <div className="glass-card" style={{ padding: '20px' }}>
+      <h3 className="section-title">Download Sample Data</h3>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+        {datasets.map((d) => (
+          <button
+            key={d.label}
+            onClick={d.action}
+            className="btn-download"
+            style={{ width: '100%', justifyContent: 'space-between' }}
+          >
+            <div style={{ textAlign: 'left' }}>
+              <div style={{ fontWeight: 600 }}>{d.label}</div>
+              <div style={{ fontSize: 10, color: 'var(--text-muted)', marginTop: 1 }}>{d.desc}</div>
+            </div>
+            <span style={{ fontSize: 9, padding: '2px 6px', background: 'rgba(99,102,241,0.15)', borderRadius: 3, fontFamily: 'var(--font-mono)' }}>{d.format}</span>
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
+</file>
+
+<file path="cookie/frontend/app/components/FilterBar.tsx">
+'use client';
+
+import React from 'react';
+
+interface Props {
+  filter: string;
+  onFilterChange: (value: string) => void;
+  groupBy: 'type' | 'group';
+  onGroupByChange: (value: 'type' | 'group') => void;
+  selectedCategory: string | null;
+  onCategorySelect: (value: string | null) => void;
+}
+
+const groups = ['all', 'Google', 'Meta', 'Amazon', 'Oracle', 'Lotame', 'Criteo', 'X/Twitter', 'Hotjar', 'TikTok'];
+
+const legendItems = [
+  { label: 'Origin', value: 'origin', color: '#3b82f6' },
+  { label: 'Analytics', value: 'analytics', color: '#8b5cf6' },
+  { label: 'Tracker', value: 'tracker', color: '#f43f5e' },
+  { label: 'Ad Network', value: 'ad-network', color: '#f97316' },
+  { label: 'Broker', value: 'broker', color: '#ef4444' },
+];
+
+export default function FilterBar({
+  filter,
+  onFilterChange,
+  groupBy,
+  onGroupByChange,
+  selectedCategory,
+  onCategorySelect,
+}: Props) {
+  return (
+    <div
+      className="glass-card"
+      style={{
+        padding: '12px 20px',
+        display: 'flex',
+        alignItems: 'center',
+        gap: 16,
+        flexWrap: 'wrap',
+        border: '1px solid var(--border-subtle)',
+        background: 'var(--bg-glass)',
+      }}
+    >
+      {/* Dropdown Filters */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+        <span style={{ fontSize: 11, color: 'var(--text-muted)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.04em' }}>Filter</span>
+        <select
+          value={filter}
+          onChange={(e) => onFilterChange(e.target.value)}
+          style={{
+            background: 'var(--bg-elevated)',
+            color: 'var(--text-primary)',
+            border: '1px solid var(--border-subtle)',
+            borderRadius: 6,
+            padding: '5px 10px',
+            fontSize: 12,
+            outline: 'none',
+            cursor: 'pointer',
+          }}
+        >
+          {groups.map((g) => (
+            <option key={g} value={g}>{g === 'all' ? 'All Groups' : g}</option>
+          ))}
+        </select>
+      </div>
+
+      {/* Group By Options */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+        <span style={{ fontSize: 11, color: 'var(--text-muted)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.04em' }}>Group By</span>
+        <div style={{ display: 'flex', borderRadius: 6, overflow: 'hidden', border: '1px solid var(--border-subtle)' }}>
+          {(['group', 'type'] as const).map((val) => (
+            <button
+              key={val}
+              onClick={() => onGroupByChange(val)}
+              style={{
+                padding: '5px 12px',
+                fontSize: 11,
+                fontWeight: 600,
+                background: groupBy === val ? 'rgba(139, 92, 246, 0.2)' : 'var(--bg-elevated)',
+                color: groupBy === val ? 'var(--text-accent)' : 'var(--text-muted)',
+                border: 'none',
+                cursor: 'pointer',
+                transition: 'all 0.15s',
+                textTransform: 'capitalize',
+              }}
+            >
+              {val === 'group' ? 'Company' : 'Type'}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <div style={{ flex: 1 }} />
+
+      {/* Interactive Legend Markers */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
+        <span
+          style={{
+            fontSize: 9,
+            color: 'var(--text-muted)',
+            fontWeight: 700,
+            textTransform: 'uppercase',
+            letterSpacing: '0.06em',
+            marginRight: 4,
+          }}
+        >
+          Legend Markers:
+        </span>
+        {legendItems.map((item) => {
+          const isActive = selectedCategory === item.value;
+          return (
+            <button
+              key={item.value}
+              onClick={() => onCategorySelect(isActive ? null : item.value)}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: 6,
+                padding: '4px 10px',
+                background: isActive ? `${item.color}25` : 'rgba(255,255,255,0.02)',
+                border: '1px solid',
+                borderColor: isActive ? item.color : 'var(--border-subtle)',
+                borderRadius: '999px',
+                cursor: 'pointer',
+                transition: 'all 0.2s',
+                outline: 'none',
+                boxShadow: isActive ? `0 0 10px ${item.color}30` : 'none',
+              }}
+              onMouseEnter={(e) => {
+                if (!isActive) {
+                  e.currentTarget.style.background = 'rgba(255,255,255,0.06)';
+                  e.currentTarget.style.borderColor = 'rgba(255,255,255,0.2)';
+                }
+              }}
+              onMouseLeave={(e) => {
+                if (!isActive) {
+                  e.currentTarget.style.background = 'rgba(255,255,255,0.02)';
+                  e.currentTarget.style.borderColor = 'var(--border-subtle)';
+                }
+              }}
+            >
+              <span
+                style={{
+                  width: 6,
+                  height: 6,
+                  borderRadius: '50%',
+                  background: item.color,
+                  boxShadow: `0 0 6px ${item.color}bb`,
+                  display: 'inline-block',
+                }}
+              />
+              <span
+                style={{
+                  fontSize: 10,
+                  fontWeight: isActive ? 700 : 500,
+                  color: isActive ? '#fff' : 'var(--text-secondary)',
+                }}
+              >
+                {item.label}
+              </span>
+            </button>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+</file>
+
+<file path="cookie/frontend/app/components/GdeltFeed.tsx">
+'use client';
+
+import React from 'react';
+import { gdeltEvents } from '../lib/data';
+
+export default function GdeltFeed() {
+  const toneColor = (tone: number) => tone < -2 ? '#f87171' : tone < 0 ? '#fbbf24' : '#34d399';
+  const themeColors: Record<string, string> = {
+    REGULATION: '#818cf8',
+    INDUSTRY_SHIFT: '#60a5fa',
+    PLATFORM_POLICY: '#34d399',
+    MARKET_IMPACT: '#f97316',
+    RESEARCH: '#a78bfa',
+  };
+
+  return (
+    <div className="glass-card" style={{ padding: '20px' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 14 }}>
+        <h3 className="section-title" style={{ margin: 0 }}>GDELT Signal Feed</h3>
+        <span style={{ fontSize: 9, color: 'var(--text-muted)', fontFamily: 'var(--font-mono)', padding: '2px 8px', background: 'rgba(245,158,11,0.1)', border: '1px solid rgba(245,158,11,0.2)', borderRadius: 4 }}>
+          SYNTHETIC DATA
+        </span>
+      </div>
+
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 8, maxHeight: 320, overflowY: 'auto' }}>
+        {gdeltEvents.map((e) => (
+          <div key={e.id} style={{ padding: '10px 12px', background: 'rgba(255,255,255,0.02)', borderRadius: 8, borderLeft: `3px solid ${themeColors[e.theme] || '#64748b'}` }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 4 }}>
+              <span style={{ fontSize: 12, fontWeight: 600, color: 'var(--text-primary)', lineHeight: 1.4, flex: 1 }}>{e.title}</span>
+            </div>
+            <div style={{ display: 'flex', gap: 8, alignItems: 'center', flexWrap: 'wrap' }}>
+              <span style={{ fontSize: 10, color: 'var(--text-muted)', fontFamily: 'var(--font-mono)' }}>{e.date}</span>
+              <span style={{ fontSize: 9, padding: '1px 6px', background: `${themeColors[e.theme]}15`, color: themeColors[e.theme], borderRadius: 3, fontWeight: 600 }}>{e.theme}</span>
+              <span style={{ fontSize: 10, color: toneColor(e.tone), fontFamily: 'var(--font-mono)' }}>tone: {e.tone > 0 ? '+' : ''}{e.tone}</span>
+              <span style={{ fontSize: 10, color: 'var(--text-muted)' }}>→ {e.trackerCategory}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+</file>
+
+<file path="cookie/frontend/app/components/Header.tsx">
+'use client';
+
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+
+interface HeaderProps {
+  onToggleOverview?: () => void;
+}
+
+export default function Header({ onToggleOverview }: HeaderProps) {
+  const [showMetaModal, setShowMetaModal] = useState(false);
+
+  const tickerItems = [
+    '17 TRACKERS FIRED FROM ONE PAGE LOAD',
+    'GOOGLE CONTROLS 28.6% OF DIGITAL AD MARKET',
+    'AVERAGE NEWS SITE: 42 THIRD-PARTY REQUESTS',
+    'DATA FLOWS TO 2 BROKER ENDPOINTS PER SESSION',
+    'TRACKERS ADD ~700ms TO PAGE LOAD TIME',
+    'CORE RAIL: DISTRIBUTION & DEMAND',
+  ];
+
+  const metadata = {
+    developer: 'Jahana Sherin K.J.',
+    program: 'Batch 2 Interns',
+    stack: [
+      { name: 'Next.js', category: 'Frontend' },
+      { name: 'FastAPI', category: 'Backend' },
+      { name: 'Tailwind CSS', category: 'Styling' },
+      { name: 'TypeScript', category: 'Language' },
+      { name: 'React Flow / D3.js', category: 'Visualization' },
+    ],
+    project: 'Cookie Tracker Graph',
+    rail: 'Cinematic Rail / Distribution & Demand',
+  };
+
+  return (
+    <header
+      style={{
+        borderBottom: '1px solid var(--border-subtle)',
+        background: 'var(--bg-deep)',
+        position: 'relative',
+        zIndex: 50,
+      }}
+    >
+      {/* Ticker */}
+      <div
+        style={{
+          borderBottom: '1px solid var(--border-subtle)',
+          padding: '6px 0',
+          background: 'rgba(139, 92, 246, 0.03)',
+        }}
+      >
+        <div className="ticker-wrap">
+          <div className="ticker-content">
+            {[...tickerItems, ...tickerItems].map((item, i) => (
+              <span
+                key={i}
+                style={{
+                  fontSize: 10,
+                  fontWeight: 600,
+                  letterSpacing: '0.06em',
+                  color: 'var(--text-muted)',
+                  fontFamily: 'var(--font-mono)',
+                }}
+              >
+                {item}
+                <span style={{ margin: '0 16px', color: 'var(--accent-indigo)', opacity: 0.4 }}>◆</span>
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Main header */}
+      <div style={{ padding: '14px 28px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+          <div>
+            <h1 style={{ fontSize: 20, fontWeight: 800, margin: 0, letterSpacing: '-0.02em' }}>
+              <span className="gradient-text">Cookie Tracker Graph</span>
+            </h1>
+            <p style={{ fontSize: 11, color: 'var(--text-muted)', margin: 0, marginTop: 2 }}>
+              Real Rails Intelligence Library · <span style={{ color: 'var(--text-accent)' }}>Distribution &amp; Demand</span>
+            </p>
+          </div>
+        </div>
+
+        <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+          {onToggleOverview && (
+            <button
+              onClick={onToggleOverview}
+              style={{
+                fontSize: 11,
+                padding: '4px 12px',
+                background: 'rgba(139, 92, 246, 0.1)',
+                color: 'var(--text-accent)',
+                border: '1px solid var(--border-glow)',
+                borderRadius: 6,
+                fontWeight: 600,
+                cursor: 'pointer',
+                transition: 'all 0.2s',
+                display: 'flex',
+                alignItems: 'center',
+                gap: 6,
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = 'rgba(139, 92, 246, 0.18)';
+                e.currentTarget.style.borderColor = 'var(--border-accent)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = 'rgba(139, 92, 246, 0.1)';
+                e.currentTarget.style.borderColor = 'var(--border-glow)';
+              }}
+            >
+              <span>📊</span> Analytics Control
+            </button>
+          )}
+
+          <span
+            style={{
+              fontSize: 10,
+              padding: '3px 10px',
+              background: 'rgba(139, 92, 246, 0.1)',
+              color: 'var(--text-accent)',
+              border: '1px solid rgba(139, 92, 246, 0.15)',
+              borderRadius: 4,
+              fontWeight: 600,
+              fontFamily: 'var(--font-mono)',
+              letterSpacing: '0.04em',
+            }}
+          >
+            SYNTHETIC DEMO
+          </span>
+
+          {/* Minimalist Info (i) Button */}
+          <button
+            onClick={() => setShowMetaModal(true)}
+            style={{
+              background: 'rgba(255,255,255,0.03)',
+              border: '1px solid var(--border-subtle)',
+              borderRadius: '50%',
+              width: '28px',
+              height: '28px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              color: 'var(--text-accent)',
+              cursor: 'pointer',
+              fontSize: '13px',
+              fontWeight: 'bold',
+              fontFamily: 'serif',
+              transition: 'all 0.2s',
+            }}
+            title="Developer Info"
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = 'rgba(139, 92, 246, 0.15)';
+              e.currentTarget.style.borderColor = 'var(--border-accent)';
+              e.currentTarget.style.transform = 'scale(1.05)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = 'rgba(255,255,255,0.03)';
+              e.currentTarget.style.borderColor = 'var(--border-subtle)';
+              e.currentTarget.style.transform = 'none';
+            }}
+          >
+            i
+          </button>
+        </div>
+      </div>
+
+      {/* Developer Metadata Modal */}
+      <AnimatePresence>
+        {showMetaModal && (
+          <div
+            style={{
+              position: 'fixed',
+              top: 0,
+              left: 0,
+              width: '100vw',
+              height: '100vh',
+              zIndex: 200,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+          >
+            {/* Modal Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 0.6 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setShowMetaModal(false)}
+              style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: '100%',
+                height: '100%',
+                background: '#000',
+              }}
+            />
+
+            {/* Modal Card */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9, y: 15 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 15 }}
+              transition={{ type: 'spring', damping: 25, stiffness: 220 }}
+              className="glass-card"
+              style={{
+                position: 'relative',
+                width: '90%',
+                maxWidth: '460px',
+                padding: '30px',
+                background: 'rgba(15, 12, 27, 0.85)',
+                border: '1px solid var(--border-accent)',
+                boxShadow: '0 10px 40px rgba(139, 92, 246, 0.15)',
+                zIndex: 10,
+              }}
+            >
+              {/* Close Button */}
+              <button
+                onClick={() => setShowMetaModal(false)}
+                style={{
+                  position: 'absolute',
+                  top: '16px',
+                  right: '16px',
+                  background: 'rgba(255,255,255,0.03)',
+                  border: '1px solid var(--border-subtle)',
+                  borderRadius: '50%',
+                  width: '28px',
+                  height: '28px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  color: 'var(--text-secondary)',
+                  cursor: 'pointer',
+                  fontSize: '18px',
+                  transition: 'all 0.2s',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = 'rgba(255,255,255,0.08)';
+                  e.currentTarget.style.color = 'var(--text-primary)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = 'rgba(255,255,255,0.03)';
+                  e.currentTarget.style.color = 'var(--text-secondary)';
+                }}
+              >
+                ×
+              </button>
+
+              {/* Title */}
+              <div style={{ marginBottom: '20px' }}>
+                <span
+                  style={{
+                    fontSize: '10px',
+                    fontWeight: 700,
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.1em',
+                    color: 'var(--accent-violet)',
+                  }}
+                >
+                  Project Intelligence Core
+                </span>
+                <h3
+                  style={{
+                    fontSize: '20px',
+                    fontWeight: 800,
+                    margin: '4px 0 0',
+                    color: '#fff',
+                  }}
+                >
+                  System Metadata
+                </h3>
+              </div>
+
+              {/* Developer Details */}
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', marginBottom: '24px' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: '100px 1fr', gap: '12px' }}>
+                  <span style={{ fontSize: '11px', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.04em', alignSelf: 'center' }}>Developer</span>
+                  <span style={{ fontSize: '14px', fontWeight: 700, color: 'var(--text-primary)' }}>{metadata.developer}</span>
+                </div>
+
+                <div style={{ display: 'grid', gridTemplateColumns: '100px 1fr', gap: '12px' }}>
+                  <span style={{ fontSize: '11px', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.04em', alignSelf: 'center' }}>Intern cohort</span>
+                  <span style={{ fontSize: '13px', fontWeight: 600, color: 'var(--text-secondary)' }}>{metadata.program}</span>
+                </div>
+
+                <div style={{ display: 'grid', gridTemplateColumns: '100px 1fr', gap: '12px' }}>
+                  <span style={{ fontSize: '11px', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.04em', alignSelf: 'center' }}>Project Rail</span>
+                  <span style={{ fontSize: '13px', fontWeight: 600, color: 'var(--text-secondary)' }}>{metadata.rail}</span>
+                </div>
+
+                <div style={{ borderTop: '1px solid var(--border-subtle)', paddingTop: '16px' }}>
+                  <span style={{ display: 'block', fontSize: '11px', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.04em', marginBottom: '10px' }}>Technology Stack</span>
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
+                    {metadata.stack.map((tech) => (
+                      <div
+                        key={tech.name}
+                        style={{
+                          background: 'rgba(139, 92, 246, 0.08)',
+                          border: '1px solid rgba(139, 92, 246, 0.18)',
+                          borderRadius: '6px',
+                          padding: '6px 10px',
+                          display: 'flex',
+                          flexDirection: 'column',
+                          gap: '2px',
+                        }}
+                      >
+                        <span style={{ fontSize: '11px', fontWeight: 700, color: '#fff' }}>{tech.name}</span>
+                        <span style={{ fontSize: '8px', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.04em' }}>{tech.category}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Footer CTA */}
+              <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+                <button
+                  onClick={() => setShowMetaModal(false)}
+                  style={{
+                    background: 'var(--gradient-main)',
+                    color: '#fff',
+                    border: 'none',
+                    borderRadius: '6px',
+                    padding: '8px 18px',
+                    fontSize: '12px',
+                    fontWeight: 600,
+                    cursor: 'pointer',
+                    boxShadow: '0 4px 12px rgba(139, 92, 246, 0.25)',
+                    transition: 'all 0.2s',
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = 'translateY(-1px)';
+                    e.currentTarget.style.boxShadow = '0 6px 16px rgba(139, 92, 246, 0.35)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = 'none';
+                    e.currentTarget.style.boxShadow = '0 4px 12px rgba(139, 92, 246, 0.25)';
+                  }}
+                >
+                  Acknowledge
+                </button>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
+    </header>
+  );
+}
+</file>
+
+<file path="cookie/frontend/app/components/IntelligencePanel.tsx">
+'use client';
+
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import ConsentToggle from './ConsentToggle';
+import PerformanceImpact from './PerformanceImpact';
+import WaterfallChart from './WaterfallChart';
+import WhyThisMatters from './WhyThisMatters';
+import DomainGroupPanel from './DomainGroupPanel';
+import GdeltFeed from './GdeltFeed';
+import DownloadPanel from './DownloadPanel';
+import NodeDetail from './NodeDetail';
+import type { TrackerNode, WaterfallEntry, ConsentState, PerformanceMetrics } from '../lib/types';
+import { getTypeColor, trackerNodes } from '../lib/data';
+
+interface IntelligencePanelProps {
+  isOpen: boolean;
+  onClose: () => void;
+  selectedNode: TrackerNode | null;
+  onNodeSelect: (node: TrackerNode | null) => void;
+  selectedCategory: string | null;
+  onCategorySelect: (category: string | null) => void;
+  consent: ConsentState;
+  onConsentChange: (consent: ConsentState) => void;
+  waterfall: WaterfallEntry[];
+  perfWith: PerformanceMetrics;
+  perfWithout: PerformanceMetrics;
+  consentActive: boolean;
+  hoveredWaterfall: string | null;
+  setHoveredWaterfall: (id: string | null) => void;
+}
+
+type TabId = 'profile' | 'performance' | 'consent' | 'signals';
+
+export default function IntelligencePanel({
+  isOpen,
+  onClose,
+  selectedNode,
+  onNodeSelect,
+  selectedCategory,
+  onCategorySelect,
+  consent,
+  onConsentChange,
+  waterfall,
+  perfWith,
+  perfWithout,
+  consentActive,
+  hoveredWaterfall,
+  setHoveredWaterfall,
+}: IntelligencePanelProps) {
+  const [activeTab, setActiveTab] = useState<TabId>('profile');
+
+  // Automatically switch to 'profile' tab if a node or category is selected
+  useEffect(() => {
+    if (selectedNode || selectedCategory) {
+      setActiveTab('profile');
+    }
+  }, [selectedNode, selectedCategory]);
+
+  const tabs: { id: TabId; label: string; icon: string }[] = [
+    { id: 'profile', label: 'Entity Profile', icon: '👤' },
+    { id: 'performance', label: 'Performance', icon: '⚡' },
+    { id: 'consent', label: 'Consent', icon: '🔒' },
+    { id: 'signals', label: 'Signals', icon: '📡' },
+  ];
+
+  // Helper to compute dynamic metrics for selected category
+  const categoryStats = React.useMemo(() => {
+    if (!selectedCategory) return null;
+    const catNodes = trackerNodes.filter(
+      (n) => n.type.toLowerCase() === selectedCategory.toLowerCase()
+    );
+    const totalCookies = catNodes.reduce((sum, n) => sum + n.cookieCount, 0);
+    const avgLatency = catNodes.length
+      ? Math.round(catNodes.reduce((sum, n) => sum + n.latencyMs, 0) / catNodes.length)
+      : 0;
+    const totalSize = catNodes.reduce((sum, n) => sum + n.sizeKb, 0);
+
+    return {
+      nodes: catNodes,
+      totalCookies,
+      avgLatency,
+      totalSize,
+    };
+  }, [selectedCategory]);
+
+  const catColor = selectedCategory ? getTypeColor(selectedCategory as any) : 'var(--text-accent)';
+
+  return (
+    <AnimatePresence>
+      {isOpen && (
+        <>
+          {/* Backdrop for mobile overlays */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.3 }}
+            exit={{ opacity: 0 }}
+            onClick={onClose}
+            style={{
+              position: 'fixed',
+              top: 0,
+              left: 0,
+              width: '100vw',
+              height: '100vh',
+              background: '#000',
+              zIndex: 90,
+            }}
+          />
+
+          {/* Sliding Panel */}
+          <motion.div
+            initial={{ x: '100%' }}
+            animate={{ x: 0 }}
+            exit={{ x: '100%' }}
+            transition={{ type: 'spring', damping: 20, stiffness: 100 }}
+            style={{
+              position: 'fixed',
+              top: 0,
+              right: 0,
+              width: '460px',
+              height: '100vh',
+              background: 'var(--bg-glass)',
+              backdropFilter: 'blur(20px)',
+              WebkitBackdropFilter: 'blur(20px)',
+              borderLeft: '1px solid var(--border-subtle)',
+              boxShadow: '-10px 0 30px rgba(0, 0, 0, 0.4)',
+              zIndex: 100,
+              display: 'flex',
+              flexDirection: 'column',
+              overflow: 'hidden',
+            }}
+          >
+            {/* Header */}
+            <div
+              style={{
+                padding: '20px 24px 14px',
+                borderBottom: '1px solid var(--border-subtle)',
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                background: 'rgba(9, 7, 18, 0.4)',
+              }}
+            >
+              <div>
+                <h2
+                  style={{
+                    fontSize: '16px',
+                    fontWeight: 700,
+                    color: 'var(--text-primary)',
+                    margin: 0,
+                    letterSpacing: '-0.01em',
+                  }}
+                >
+                  Intelligence Panel
+                </h2>
+                <p style={{ fontSize: '11px', color: 'var(--text-muted)', margin: '2px 0 0' }}>
+                  Distribution & Demand Analytics
+                </p>
+              </div>
+              <button
+                onClick={onClose}
+                style={{
+                  background: 'rgba(255,255,255,0.03)',
+                  border: '1px solid var(--border-subtle)',
+                  borderRadius: '50%',
+                  width: '28px',
+                  height: '28px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  color: 'var(--text-secondary)',
+                  cursor: 'pointer',
+                  fontSize: '18px',
+                  transition: 'all 0.2s',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = 'rgba(255,255,255,0.08)';
+                  e.currentTarget.style.color = 'var(--text-primary)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = 'rgba(255,255,255,0.03)';
+                  e.currentTarget.style.color = 'var(--text-secondary)';
+                }}
+              >
+                ×
+              </button>
+            </div>
+
+            {/* Tab Bar */}
+            <div
+              style={{
+                display: 'flex',
+                background: 'rgba(0, 0, 0, 0.15)',
+                borderBottom: '1px solid var(--border-subtle)',
+                padding: '0 8px',
+              }}
+            >
+              {tabs.map((tab) => (
+                <button
+                  key={tab.id}
+                  onClick={() => setActiveTab(tab.id)}
+                  style={{
+                    flex: 1,
+                    padding: '12px 6px',
+                    fontSize: '11px',
+                    fontWeight: 600,
+                    background: 'transparent',
+                    border: 'none',
+                    borderBottom: activeTab === tab.id ? '2px solid var(--accent-indigo)' : '2px solid transparent',
+                    color: activeTab === tab.id ? 'var(--text-primary)' : 'var(--text-muted)',
+                    cursor: 'pointer',
+                    transition: 'all 0.2s',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '6px',
+                  }}
+                >
+                  <span style={{ fontSize: '13px' }}>{tab.icon}</span>
+                  {tab.label}
+                </button>
+              ))}
+            </div>
+
+            {/* Tab Content */}
+            <div
+              style={{
+                flex: 1,
+                overflowY: 'auto',
+                padding: '20px',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '16px',
+              }}
+            >
+              {activeTab === 'profile' && (
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+                  {selectedNode ? (
+                    <NodeDetail node={selectedNode} onClose={() => onNodeSelect(null)} />
+                  ) : selectedCategory ? (
+                    <div className="glass-card" style={{ padding: '20px' }}>
+                      <div
+                        style={{
+                          display: 'flex',
+                          justifyContent: 'space-between',
+                          alignItems: 'flex-start',
+                          marginBottom: 16,
+                        }}
+                      >
+                        <div>
+                          <h3
+                            style={{
+                              fontSize: 16,
+                              fontWeight: 700,
+                              color: 'var(--text-primary)',
+                              margin: 0,
+                              marginBottom: 4,
+                            }}
+                          >
+                            Category Profile: {selectedCategory}
+                          </h3>
+                          <span
+                            className="badge badge-tracker"
+                            style={{ background: `${catColor}20`, color: catColor, borderColor: `${catColor}40` }}
+                          >
+                            Category Marker
+                          </span>
+                        </div>
+                        <button
+                          onClick={() => onCategorySelect(null)}
+                          style={{
+                            background: 'none',
+                            border: 'none',
+                            color: 'var(--text-muted)',
+                            cursor: 'pointer',
+                            fontSize: 18,
+                          }}
+                        >
+                          ×
+                        </button>
+                      </div>
+
+                      <p
+                        style={{
+                          fontSize: 13,
+                          color: 'var(--text-secondary)',
+                          lineHeight: 1.5,
+                          marginBottom: 16,
+                        }}
+                      >
+                        Summary details for all node connections tagged under the{' '}
+                        <strong>{selectedCategory}</strong> structural classification.
+                      </p>
+
+                      <div
+                        style={{
+                          display: 'grid',
+                          gridTemplateColumns: '1fr 1fr',
+                          gap: 8,
+                          marginBottom: 16,
+                        }}
+                      >
+                        {[
+                          { label: 'Category', value: selectedCategory },
+                          { label: 'Total Trackers', value: String(categoryStats?.nodes.length || 0) },
+                          { label: 'Total Cookies', value: String(categoryStats?.totalCookies || 0) },
+                          { label: 'Avg Latency', value: `${categoryStats?.avgLatency || 0}ms` },
+                          { label: 'Cumulative Weight', value: `${categoryStats?.totalSize || 0}KB` },
+                        ].map((s) => (
+                          <div
+                            key={s.label}
+                            style={{
+                              padding: '8px 10px',
+                              background: 'rgba(255,255,255,0.02)',
+                              borderRadius: 6,
+                            }}
+                          >
+                            <div
+                              style={{
+                                fontSize: 9,
+                                color: 'var(--text-muted)',
+                                textTransform: 'uppercase',
+                                letterSpacing: '0.06em',
+                              }}
+                            >
+                              {s.label}
+                            </div>
+                            <div
+                              style={{
+                                fontSize: 13,
+                                fontWeight: 600,
+                                color: 'var(--text-primary)',
+                                fontFamily: 'var(--font-mono)',
+                                marginTop: 2,
+                              }}
+                            >
+                              {s.value}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+
+                      <div>
+                        <div
+                          style={{
+                            fontSize: 10,
+                            color: 'var(--text-muted)',
+                            textTransform: 'uppercase',
+                            letterSpacing: '0.06em',
+                            marginBottom: 8,
+                          }}
+                        >
+                          Active Identifiers
+                        </div>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+                          {categoryStats?.nodes.map((node) => (
+                            <div
+                              key={node.id}
+                              onClick={() => onNodeSelect(node)}
+                              style={{
+                                display: 'flex',
+                                justifyContent: 'space-between',
+                                alignItems: 'center',
+                                padding: '6px 10px',
+                                background: 'rgba(255,255,255,0.01)',
+                                border: '1px solid rgba(255,255,255,0.03)',
+                                borderRadius: 6,
+                                cursor: 'pointer',
+                                transition: 'all 0.15s',
+                              }}
+                              onMouseEnter={(e) => {
+                                e.currentTarget.style.borderColor = 'var(--border-glow)';
+                                e.currentTarget.style.background = 'rgba(255,255,255,0.03)';
+                              }}
+                              onMouseLeave={(e) => {
+                                e.currentTarget.style.borderColor = 'rgba(255,255,255,0.03)';
+                                e.currentTarget.style.background = 'rgba(255,255,255,0.01)';
+                              }}
+                            >
+                              <span style={{ fontSize: 12, fontWeight: 600 }}>{node.label}</span>
+                              <span
+                                style={{
+                                  fontSize: 10,
+                                  fontFamily: 'var(--font-mono)',
+                                  color: 'var(--text-muted)',
+                                }}
+                              >
+                                {node.domain}
+                              </span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  ) : (
+                    <div
+                      style={{
+                        padding: '40px 20px',
+                        textAlign: 'center',
+                        color: 'var(--text-muted)',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        minHeight: '260px',
+                        border: '1px dashed var(--border-subtle)',
+                        borderRadius: '16px',
+                        background: 'rgba(255, 255, 255, 0.01)',
+                      }}
+                    >
+                      <span style={{ fontSize: '32px', marginBottom: '16px', filter: 'grayscale(0.3)' }}>🕸️</span>
+                      <h4
+                        style={{
+                          fontSize: '14px',
+                          color: 'var(--text-primary)',
+                          margin: '0 0 6px 0',
+                          fontWeight: 600,
+                        }}
+                      >
+                        No Entity Selected
+                      </h4>
+                      <p style={{ fontSize: '11px', lineHeight: 1.5, margin: 0, maxWidth: '280px' }}>
+                        Click on any node in the full-screen graph, or click a category legend marker in the Filter
+                        Bar to slide over detailed profiles.
+                      </p>
+                    </div>
+                  )}
+
+                  <DownloadPanel waterfall={waterfall} />
+                </div>
+              )}
+
+              {activeTab === 'performance' && (
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+                  <PerformanceImpact
+                    withTrackers={perfWith}
+                    withoutTrackers={perfWithout}
+                    consentActive={consentActive}
+                  />
+                  <WaterfallChart
+                    entries={waterfall}
+                    onEntryHover={(entry) => setHoveredWaterfall(entry ? entry.id : null)}
+                    hoveredEntry={hoveredWaterfall}
+                  />
+                </div>
+              )}
+
+              {activeTab === 'consent' && (
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+                  <ConsentToggle consent={consent} onChange={onConsentChange} />
+                  <WhyThisMatters />
+                </div>
+              )}
+
+              {activeTab === 'signals' && (
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+                  <GdeltFeed />
+                  <DomainGroupPanel />
+                </div>
+              )}
+            </div>
+          </motion.div>
+        </>
+      )}
+    </AnimatePresence>
+  );
+}
+</file>
+
+<file path="cookie/frontend/app/components/NodeDetail.tsx">
+'use client';
+
+import React from 'react';
+import type { TrackerNode } from '../lib/types';
+import { getTypeColor, getTypeBadgeClass } from '../lib/data';
+
+interface Props {
+  node: TrackerNode;
+  onClose: () => void;
+}
+
+export default function NodeDetail({ node, onClose }: Props) {
+  const color = getTypeColor(node.type);
+
+  return (
+    <div className="glass-card" style={{ padding: '20px' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 12 }}>
+        <div>
+          <h3 style={{ fontSize: 16, fontWeight: 700, color: 'var(--text-primary)', margin: 0, marginBottom: 4 }}>{node.label}</h3>
+          <span className={`badge ${getTypeBadgeClass(node.type)}`}>{node.type}</span>
+        </div>
+        <button onClick={onClose} style={{ background: 'none', border: 'none', color: 'var(--text-muted)', cursor: 'pointer', fontSize: 18 }}>×</button>
+      </div>
+
+      <p style={{ fontSize: 13, color: 'var(--text-secondary)', lineHeight: 1.5, marginBottom: 16 }}>{node.purpose}</p>
+
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8, marginBottom: 16 }}>
+        {[
+          { label: 'Domain', value: node.domain },
+          { label: 'Group', value: node.group },
+          { label: 'Cookies', value: String(node.cookieCount) },
+          { label: 'Latency', value: `${node.latencyMs}ms` },
+          { label: 'Size', value: `${node.sizeKb}KB` },
+          { label: 'Consent', value: node.consentRequired ? 'Required' : 'Not needed' },
+        ].map((s) => (
+          <div key={s.label} style={{ padding: '8px 10px', background: 'rgba(255,255,255,0.02)', borderRadius: 6 }}>
+            <div style={{ fontSize: 9, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.06em' }}>{s.label}</div>
+            <div style={{ fontSize: 13, fontWeight: 600, color: 'var(--text-primary)', fontFamily: 'var(--font-mono)', marginTop: 2 }}>{s.value}</div>
+          </div>
+        ))}
+      </div>
+
+      <div>
+        <div style={{ fontSize: 10, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: 6 }}>Data Collected</div>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 4 }}>
+          {node.dataCollected.map((d) => (
+            <span key={d} style={{ padding: '2px 8px', fontSize: 10, background: `${color}15`, color: `${color}cc`, border: `1px solid ${color}25`, borderRadius: 4, fontFamily: 'var(--font-mono)' }}>{d}</span>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+</file>
+
+<file path="cookie/frontend/app/components/PerformanceImpact.tsx">
+'use client';
+
+import React from 'react';
+import type { PerformanceMetrics } from '../lib/types';
+
+interface Props {
+  withTrackers: PerformanceMetrics;
+  withoutTrackers: PerformanceMetrics;
+  consentActive: boolean;
+}
+
+export default function PerformanceImpact({ withTrackers, withoutTrackers, consentActive }: Props) {
+  const current = consentActive ? withTrackers : withoutTrackers;
+  const diff = {
+    requests: withTrackers.trackerRequests,
+    sizeKb: withTrackers.trackerSizeKb,
+    timeMs: withTrackers.totalTimeMs - withoutTrackers.totalTimeMs,
+  };
+
+  const level = diff.requests > 10 ? 'critical' : diff.requests > 5 ? 'high' : diff.requests > 0 ? 'moderate' : 'clean';
+  const colors: Record<string, { bg: string; text: string; border: string; label: string }> = {
+    critical: { bg: 'rgba(239,68,68,0.1)', text: '#f87171', border: 'rgba(239,68,68,0.25)', label: 'CRITICAL' },
+    high: { bg: 'rgba(249,115,22,0.1)', text: '#fb923c', border: 'rgba(249,115,22,0.25)', label: 'HIGH' },
+    moderate: { bg: 'rgba(245,158,11,0.1)', text: '#fbbf24', border: 'rgba(245,158,11,0.25)', label: 'MODERATE' },
+    clean: { bg: 'rgba(16,185,129,0.1)', text: '#34d399', border: 'rgba(16,185,129,0.25)', label: 'CLEAN' },
+  };
+  const c = colors[level];
+
+  const stats = [
+    { label: 'Requests', value: current.totalRequests, suffix: '' },
+    { label: 'Tracker Reqs', value: current.trackerRequests, suffix: '', hl: true },
+    { label: 'Page Size', value: `${(current.totalSizeKb / 1024).toFixed(1)}`, suffix: 'MB' },
+    { label: 'Tracker KB', value: `${current.trackerSizeKb}`, suffix: 'KB' },
+    { label: 'First Paint', value: current.firstPaint, suffix: 'ms' },
+    { label: 'LCP', value: current.largestContentfulPaint, suffix: 'ms' },
+  ];
+
+  return (
+    <div className="glass-card" style={{ padding: '20px' }}>
+      <h3 className="section-title">Page Performance Impact</h3>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '12px', background: c.bg, border: `1px solid ${c.border}`, borderRadius: '10px', marginBottom: '16px' }}>
+        <div style={{ width: 10, height: 10, borderRadius: '50%', background: c.text, boxShadow: `0 0 8px ${c.text}60` }} className="animate-pulse-glow" />
+        <div>
+          <div style={{ fontSize: 12, fontWeight: 700, color: c.text, letterSpacing: '0.04em' }}>{c.label} IMPACT</div>
+          <div style={{ fontSize: 11, color: 'var(--text-muted)', marginTop: 2 }}>{diff.requests} trackers add {diff.timeMs}ms &amp; {diff.sizeKb}KB</div>
+        </div>
+      </div>
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8 }}>
+        {stats.map((s) => (
+          <div key={s.label} style={{ padding: '10px 12px', background: 'rgba(255,255,255,0.02)', borderRadius: 8, border: '1px solid var(--border-subtle)' }}>
+            <div style={{ fontSize: 10, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.04em' }}>{s.label}</div>
+            <div style={{ fontSize: 18, fontWeight: 700, color: s.hl ? 'var(--accent-rose)' : 'var(--text-primary)', fontFamily: 'var(--font-mono)', marginTop: 2 }}>
+              {s.value}<span style={{ fontSize: 11, color: 'var(--text-muted)', marginLeft: 2 }}>{s.suffix}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+      {consentActive && (
+        <div style={{ marginTop: 14 }}>
+          <div style={{ fontSize: 10, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.04em', marginBottom: 6 }}>LCP Comparison</div>
+          {[
+            { label: 'No trackers', val: withoutTrackers.largestContentfulPaint, color: '#34d399', pct: (withoutTrackers.largestContentfulPaint / withTrackers.largestContentfulPaint) * 100, grad: 'linear-gradient(90deg,#10b981,#06b6d4)' },
+            { label: 'With trackers', val: withTrackers.largestContentfulPaint, color: '#f87171', pct: 100, grad: 'linear-gradient(90deg,#f43f5e,#f97316)' },
+          ].map((b) => (
+            <div key={b.label} style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 4 }}>
+              <span style={{ fontSize: 10, color: b.color, width: 70 }}>{b.label}</span>
+              <div style={{ flex: 1, height: 6, background: 'rgba(255,255,255,0.04)', borderRadius: 3 }}>
+                <div style={{ width: `${b.pct}%`, height: '100%', background: b.grad, borderRadius: 3 }} />
+              </div>
+              <span style={{ fontSize: 10, fontFamily: 'var(--font-mono)', color: b.color, width: 50, textAlign: 'right' as const }}>{b.val}ms</span>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+</file>
+
+<file path="cookie/frontend/app/components/TrackerGraph.tsx">
+'use client';
+
+import React, { useMemo, useCallback } from 'react';
+import ReactFlow, {
+  Background,
+  Controls,
+  MiniMap,
+  type Node,
+  type Edge,
+} from 'reactflow';
+import 'reactflow/dist/style.css';
+import type { TrackerNode, TrackerEdge, ConsentState } from '../lib/types';
+import { getTypeColor, getGroupColor } from '../lib/data';
+
+interface TrackerGraphProps {
+  nodes: TrackerNode[];
+  edges: TrackerEdge[];
+  consent: ConsentState;
+  filter: string;
+  groupBy: 'type' | 'group';
+  onNodeSelect: (node: TrackerNode | null) => void;
+  selectedNodeId: string | null;
+  selectedCategory: string | null;
+}
+
+function layoutNodes(
+  trackerNodes: TrackerNode[],
+  groupBy: 'type' | 'group',
+  selectedCategory: string | null,
+  selectedNodeId: string | null
+): Node[] {
+  // Radial layout with grouping
+  const groups = new Map<string, TrackerNode[]>();
+
+  trackerNodes.forEach((n) => {
+    const key = groupBy === 'group' ? n.group : n.type;
+    if (!groups.has(key)) groups.set(key, []);
+    groups.get(key)!.push(n);
+  });
+
+  const flowNodes: Node[] = [];
+  const groupEntries = Array.from(groups.entries());
+  const centerX = 500;
+  const centerY = 350;
+
+  groupEntries.forEach(([groupName, members], groupIdx) => {
+    const groupAngle = (groupIdx / groupEntries.length) * 2 * Math.PI - Math.PI / 2;
+    const groupRadius = members.length === 1 && members[0].type === 'origin' ? 0 : 280;
+
+    const groupCenterX = centerX + Math.cos(groupAngle) * groupRadius;
+    const groupCenterY = centerY + Math.sin(groupAngle) * groupRadius;
+
+    members.forEach((node, memberIdx) => {
+      let x: number, y: number;
+
+      if (node.type === 'origin') {
+        x = centerX;
+        y = centerY;
+      } else if (members.length === 1) {
+        x = groupCenterX;
+        y = groupCenterY;
+      } else {
+        const memberAngle = (memberIdx / members.length) * 2 * Math.PI;
+        const memberRadius = 70 + members.length * 15;
+        x = groupCenterX + Math.cos(memberAngle) * memberRadius;
+        y = groupCenterY + Math.sin(memberAngle) * memberRadius;
+      }
+
+      const color = groupBy === 'group' ? getGroupColor(node.group) : getTypeColor(node.type);
+      const isOrigin = node.type === 'origin';
+
+      // Highlight logic
+      const isSelectedNode = selectedNodeId === node.id;
+      const isCategoryMatch = selectedCategory
+        ? node.type.toLowerCase() === selectedCategory.toLowerCase()
+        : false;
+      const isHighlighted = selectedCategory
+        ? (isCategoryMatch || isOrigin)
+        : true;
+
+      const opacity = isHighlighted ? 1 : 0.15;
+      const scale = isSelectedNode ? 'scale(1.1)' : 'scale(1)';
+
+      flowNodes.push({
+        id: node.id,
+        position: { x, y },
+        data: {
+          label: (
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: '2px',
+              }}
+            >
+              <span style={{
+                fontSize: isOrigin ? '13px' : '11px',
+                fontWeight: 600,
+                color: '#fff',
+                textShadow: '0 1px 3px rgba(0,0,0,0.5)',
+              }}>
+                {node.label}
+              </span>
+              {!isOrigin && (
+                <span style={{
+                  fontSize: '9px',
+                  color: 'rgba(255,255,255,0.6)',
+                  fontFamily: 'var(--font-mono)',
+                }}>
+                  {node.cookieCount} cookies · {node.latencyMs}ms
+                </span>
+              )}
+            </div>
+          ),
+        },
+        style: {
+          background: isSelectedNode ? `${color}40` : `${color}15`,
+          border: isSelectedNode
+            ? `2px solid ${color}`
+            : isCategoryMatch
+            ? `2px solid ${color}cc`
+            : `1.5px solid ${color}60`,
+          borderRadius: isOrigin ? '50%' : '12px',
+          padding: isOrigin ? '20px' : '10px 14px',
+          color: '#fff',
+          boxShadow: isSelectedNode
+            ? `0 0 24px ${color}60, inset 0 1px 0 ${color}30`
+            : isCategoryMatch
+            ? `0 0 16px ${color}40`
+            : `0 0 12px ${color}10`,
+          backdropFilter: 'blur(8px)',
+          minWidth: isOrigin ? '120px' : undefined,
+          textAlign: 'center' as const,
+          opacity: opacity,
+          transform: scale,
+          transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+        },
+      });
+    });
+  });
+
+  return flowNodes;
+}
+
+export default function TrackerGraph({
+  nodes: trackerNodes,
+  edges: trackerEdges,
+  consent,
+  filter,
+  groupBy,
+  onNodeSelect,
+  selectedNodeId,
+  selectedCategory,
+}: TrackerGraphProps) {
+  // Filter nodes based on consent
+  const visibleNodes = useMemo(() => {
+    return trackerNodes.filter((n) => {
+      if (n.type === 'origin' || n.type === 'first-party' || n.type === 'cdn') return true;
+      if (!consent.analytics && n.type === 'analytics') return false;
+      if (!consent.marketing && (n.type === 'ad-network' || n.type === 'broker' || n.type === 'tracker')) return false;
+      if (!consent.social && n.type === 'social') return false;
+      if (filter !== 'all' && n.group !== filter) return false;
+      return true;
+    });
+  }, [trackerNodes, consent, filter]);
+
+  const flowNodes = useMemo(
+    () => layoutNodes(visibleNodes, groupBy, selectedCategory, selectedNodeId),
+    [visibleNodes, groupBy, selectedCategory, selectedNodeId]
+  );
+
+  const flowEdges: Edge[] = useMemo(() => {
+    const visibleIds = new Set(visibleNodes.map((n) => n.id));
+    return trackerEdges
+      .filter((e) => visibleIds.has(e.source) && visibleIds.has(e.target))
+      .map((e) => {
+        const sourceNode = trackerNodes.find((n) => n.id === e.source);
+        const targetNode = trackerNodes.find((n) => n.id === e.target);
+        const color = sourceNode ? getTypeColor(sourceNode.type) : '#64748b';
+
+        // Highlighting edges linked to selected category
+        const isSourceCategory = selectedCategory
+          ? sourceNode?.type.toLowerCase() === selectedCategory.toLowerCase()
+          : false;
+        const isTargetCategory = selectedCategory
+          ? targetNode?.type.toLowerCase() === selectedCategory.toLowerCase()
+          : false;
+        const isEdgeHighlighted = selectedCategory
+          ? (isSourceCategory || isTargetCategory)
+          : true;
+
+        const opacity = isEdgeHighlighted ? 'a0' : '15';
+
+        return {
+          id: `${e.source}-${e.target}`,
+          source: e.source,
+          target: e.target,
+          animated: isEdgeHighlighted,
+          style: {
+            stroke: `${color}${opacity}`,
+            strokeWidth: isEdgeHighlighted ? 1.8 : 0.8,
+            transition: 'stroke 0.3s, stroke-width 0.3s',
+          },
+          labelStyle: { fontSize: '9px', fill: '#64748b' },
+        };
+      });
+  }, [trackerEdges, visibleNodes, trackerNodes, selectedCategory]);
+
+  const onNodeClick = useCallback(
+    (_: React.MouseEvent, node: Node) => {
+      const trackerNode = trackerNodes.find((n) => n.id === node.id);
+      onNodeSelect(trackerNode || null);
+    },
+    [trackerNodes, onNodeSelect]
+  );
+
+  return (
+    <div style={{ height: '100%', overflow: 'hidden', width: '100%' }}>
+      <ReactFlow
+        nodes={flowNodes}
+        edges={flowEdges}
+        onNodeClick={onNodeClick}
+        onPaneClick={() => onNodeSelect(null)}
+        fitView
+        fitViewOptions={{ padding: 0.15 }}
+        minZoom={0.2}
+        maxZoom={1.8}
+        proOptions={{ hideAttribution: true }}
+      >
+        <Background color="rgba(167, 139, 250, 0.04)" gap={24} size={1} />
+        <Controls position="bottom-right" style={{ display: 'flex', flexDirection: 'row', bottom: 16, right: 16 }} />
+        <MiniMap
+          position="bottom-left"
+          nodeColor={(n) => {
+            const tracker = trackerNodes.find((t) => t.id === n.id);
+            return tracker ? getTypeColor(tracker.type) : '#64748b';
+          }}
+          maskColor="rgba(5, 4, 9, 0.85)"
+          style={{
+            borderRadius: '8px',
+            background: 'var(--bg-card)',
+            border: '1px solid var(--border-subtle)',
+            bottom: 16,
+            left: 16,
+          }}
+        />
+      </ReactFlow>
+    </div>
+  );
+}
+</file>
+
+<file path="cookie/frontend/app/components/WaterfallChart.tsx">
+'use client';
+
+import React, { useMemo } from 'react';
+import {
+  type WaterfallEntry,
+} from '../lib/types';
+import { getTypeColor } from '../lib/data';
+
+interface WaterfallChartProps {
+  entries: WaterfallEntry[];
+  onEntryHover: (entry: WaterfallEntry | null) => void;
+  hoveredEntry: string | null;
+}
+
+export default function WaterfallChart({ entries, onEntryHover, hoveredEntry }: WaterfallChartProps) {
+  const maxTime = useMemo(
+    () => Math.max(...entries.map((e) => e.startMs + e.durationMs), 1),
+    [entries]
+  );
+
+  return (
+    <div className="glass-card" style={{ padding: '20px' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
+        <h3 className="section-title" style={{ margin: 0 }}>Request Waterfall</h3>
+        <span style={{ fontSize: '11px', color: 'var(--text-muted)', fontFamily: 'var(--font-mono)' }}>
+          {entries.length} requests · {maxTime}ms total
+        </span>
+      </div>
+
+      {/* Timeline ruler */}
+      <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px', paddingLeft: '180px' }}>
+        {[0, 0.25, 0.5, 0.75, 1].map((pct) => (
+          <span key={pct} style={{ fontSize: '10px', color: 'var(--text-muted)', fontFamily: 'var(--font-mono)' }}>
+            {Math.round(maxTime * pct)}ms
+          </span>
+        ))}
+      </div>
+
+      <div style={{ maxHeight: '380px', overflowY: 'auto', overflowX: 'hidden' }}>
+        {entries.map((entry, i) => {
+          const left = (entry.startMs / maxTime) * 100;
+          const width = Math.max((entry.durationMs / maxTime) * 100, 1);
+          const color = getTypeColor(entry.type);
+          const isHovered = hoveredEntry === entry.id;
+
+          return (
+            <div
+              key={entry.id}
+              onMouseEnter={() => onEntryHover(entry)}
+              onMouseLeave={() => onEntryHover(null)}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '8px',
+                padding: '4px 0',
+                borderRadius: '4px',
+                cursor: 'pointer',
+                background: isHovered ? 'rgba(255,255,255,0.03)' : 'transparent',
+                transition: 'background 0.15s',
+                animationDelay: `${i * 30}ms`,
+              }}
+              className="animate-fade-in"
+            >
+              {/* Label */}
+              <div
+                style={{
+                  width: '172px',
+                  flexShrink: 0,
+                  fontSize: '11px',
+                  fontFamily: 'var(--font-mono)',
+                  color: isHovered ? 'var(--text-primary)' : 'var(--text-secondary)',
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis',
+                  whiteSpace: 'nowrap',
+                  transition: 'color 0.15s',
+                }}
+                title={entry.label}
+              >
+                <span
+                  style={{
+                    display: 'inline-block',
+                    width: '6px',
+                    height: '6px',
+                    borderRadius: '50%',
+                    background: color,
+                    marginRight: '6px',
+                    flexShrink: 0,
+                    boxShadow: `0 0 6px ${color}40`,
+                  }}
+                />
+                {entry.label}
+              </div>
+
+              {/* Bar container */}
+              <div
+                style={{
+                  flex: 1,
+                  height: '16px',
+                  position: 'relative',
+                  background: 'rgba(255,255,255,0.02)',
+                  borderRadius: '3px',
+                }}
+              >
+                <div
+                  className="waterfall-bar"
+                  style={{
+                    position: 'absolute',
+                    left: `${left}%`,
+                    width: `${width}%`,
+                    height: '100%',
+                    background: `linear-gradient(90deg, ${color}cc, ${color}88)`,
+                    borderRadius: '3px',
+                    boxShadow: isHovered ? `0 0 8px ${color}40` : 'none',
+                    transition: 'box-shadow 0.15s',
+                  }}
+                />
+              </div>
+
+              {/* Size */}
+              <span
+                style={{
+                  width: '50px',
+                  textAlign: 'right',
+                  fontSize: '10px',
+                  fontFamily: 'var(--font-mono)',
+                  color: 'var(--text-muted)',
+                  flexShrink: 0,
+                }}
+              >
+                {entry.sizeKb}KB
+              </span>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+</file>
+
+<file path="cookie/frontend/app/components/WhyThisMatters.tsx">
+'use client';
+
+import React from 'react';
+
+export default function WhyThisMatters() {
+  const points = [
+    { icon: '🕸️', title: 'One page, 17 requests', desc: 'A single news article triggers tracker calls to Google, Meta, Amazon, Oracle, and more — before you finish reading the headline.' },
+    { icon: '🧬', title: 'Data broker chains', desc: 'Your browsing data doesn\'t stay with the publisher. It flows through ad exchanges to data brokers who merge it with offline records, credit data, and location history.' },
+    { icon: '⏱️', title: 'Performance tax', desc: 'Trackers add ~700ms to page load and consume 40%+ of transfer bytes. Users on slower connections pay the highest price for surveillance they never opted into.' },
+    { icon: '🔄', title: 'Consent theater', desc: 'Toggle consent off above and watch the graph collapse. The infrastructure exists whether or not your "preference" cookie is set.' },
+  ];
+
+  return (
+    <div className="glass-card" style={{ padding: '20px' }}>
+      <h3 className="section-title">Why This Matters</h3>
+      <p style={{ fontSize: 12, color: 'var(--text-muted)', marginBottom: 14, lineHeight: 1.5 }}>
+        Distribution &amp; Demand — the core rail of digital advertising — runs on a hidden graph of tracker-to-broker connections that most users never see.
+      </p>
+
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+        {points.map((p) => (
+          <div key={p.title} style={{ display: 'flex', gap: 10, padding: '10px 12px', background: 'rgba(255,255,255,0.02)', borderRadius: 8 }}>
+            <span style={{ fontSize: 18, flexShrink: 0 }}>{p.icon}</span>
+            <div>
+              <div style={{ fontSize: 13, fontWeight: 600, color: 'var(--text-primary)', marginBottom: 2 }}>{p.title}</div>
+              <div style={{ fontSize: 11, color: 'var(--text-secondary)', lineHeight: 1.5 }}>{p.desc}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+</file>
+
+<file path="cookie/frontend/app/globals.css">
+@import "tailwindcss";
+
+@theme {
+  --color-accent: #a78bfa;
+  --color-accent-indigo: #8b5cf6;
+  --color-bg-void: #050409;
+  --color-bg-deep: #090712;
+}
+
+/* ── Design Tokens ── */
+:root {
+  --bg-void: #050409;          /* Cold Obsidian, Luminance < 10% */
+  --bg-deep: #090712;          /* Slate-purple tint, Luminance < 10% */
+  --bg-surface: #100d20;
+  --bg-card: #15112a;
+  --bg-elevated: #1d173c;
+  --bg-glass: rgba(9, 7, 18, 0.7);
+  
+  --border-subtle: rgba(167, 139, 250, 0.12);
+  --border-glow: rgba(167, 139, 250, 0.22);
+  --border-accent: rgba(167, 139, 250, 0.35);
+  
+  --text-primary: #f3f1f6;
+  --text-secondary: #a39eb2;
+  --text-muted: #6e6a86;
+  --text-accent: #c4b5fd;
+  
+  --accent-blue: #6366f1;       /* Indigo */
+  --accent-indigo: #8b5cf6;     /* Purple */
+  --accent-violet: #a78bfa;     /* Lavender */
+  --accent-cyan: #06b6d4;
+  --accent-emerald: #10b981;
+  --accent-amber: #f59e0b;
+  --accent-rose: #f43f5e;
+  --accent-orange: #f97316;
+  
+  --glow-blue: 0 0 20px rgba(99, 102, 241, 0.15);
+  --glow-indigo: 0 0 20px rgba(139, 92, 246, 0.15);
+  --glow-rose: 0 0 20px rgba(244, 63, 94, 0.15);
+  
+  --gradient-main: linear-gradient(135deg, #a78bfa 0%, #8b5cf6 50%, #6366f1 100%);
+  --gradient-danger: linear-gradient(135deg, #f43f5e 0%, #f97316 100%);
+  --gradient-success: linear-gradient(135deg, #10b981 0%, #06b6d4 100%);
+  
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+/* ── Base ── */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  font-family: var(--font-sans);
+  background: var(--bg-void);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(99, 118, 163, 0.2);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(99, 118, 163, 0.4);
+}
+
+/* ── Glass Card ── */
+.glass-card {
+  background: var(--bg-glass);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.glass-card:hover {
+  border-color: var(--border-glow);
+  box-shadow: var(--glow-blue);
+}
+
+/* ── Glow Effects ── */
+.glow-blue { box-shadow: var(--glow-blue); }
+.glow-indigo { box-shadow: var(--glow-indigo); }
+.glow-rose { box-shadow: var(--glow-rose); }
+
+/* ── Gradient Text ── */
+.gradient-text {
+  background: var(--gradient-main);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Pulse Animation ── */
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* ── Shimmer ── */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.shimmer {
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.04) 50%, transparent 100%);
+  background-size: 200% 100%;
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+/* ── Flow edges animation ── */
+.react-flow__edge-path {
+  stroke-dasharray: 5;
+  animation: dashmove 1s linear infinite;
+}
+@keyframes dashmove {
+  to { stroke-dashoffset: -10; }
+}
+
+/* ── ReactFlow overrides ── */
+.react-flow__background {
+  background: var(--bg-deep) !important;
+}
+.react-flow__node {
+  cursor: pointer;
+}
+.react-flow__minimap {
+  background: var(--bg-card) !important;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-subtle) !important;
+}
+.react-flow__controls {
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  border: 1px solid var(--border-subtle);
+  box-shadow: none !important;
+}
+.react-flow__controls-button {
+  background: var(--bg-card) !important;
+  border-color: var(--border-subtle) !important;
+  fill: var(--text-secondary) !important;
+}
+.react-flow__controls-button:hover {
+  background: var(--bg-elevated) !important;
+  fill: var(--text-primary) !important;
+}
+
+/* ── Waterfall Bar Animation ── */
+@keyframes waterfall-fill {
+  from { width: 0; }
+}
+.waterfall-bar {
+  animation: waterfall-fill 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* ── Fade In ── */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-fade-in {
+  animation: fade-in-up 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* ── Badge ── */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+.badge-tracker {
+  background: rgba(244, 63, 94, 0.15);
+  color: #fb7185;
+  border: 1px solid rgba(244, 63, 94, 0.2);
+}
+.badge-first-party {
+  background: rgba(59, 130, 246, 0.15);
+  color: #60a5fa;
+  border: 1px solid rgba(59, 130, 246, 0.2);
+}
+.badge-broker {
+  background: rgba(249, 115, 22, 0.15);
+  color: #fb923c;
+  border: 1px solid rgba(249, 115, 22, 0.2);
+}
+.badge-cdn {
+  background: rgba(16, 185, 129, 0.15);
+  color: #34d399;
+  border: 1px solid rgba(16, 185, 129, 0.2);
+}
+.badge-analytics {
+  background: rgba(139, 92, 246, 0.15);
+  color: #a78bfa;
+  border: 1px solid rgba(139, 92, 246, 0.2);
+}
+
+/* ── Toggle Switch ── */
+.toggle-switch {
+  position: relative;
+  width: 44px;
+  height: 24px;
+  background: rgba(100, 116, 139, 0.3);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background 0.3s;
+  border: 1px solid var(--border-subtle);
+  flex-shrink: 0;
+}
+.toggle-switch.active {
+  background: rgba(99, 102, 241, 0.4);
+  border-color: rgba(99, 102, 241, 0.5);
+}
+.toggle-switch::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--text-secondary);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.toggle-switch.active::after {
+  transform: translateX(20px);
+  background: var(--accent-indigo);
+  box-shadow: 0 0 8px rgba(99, 102, 241, 0.4);
+}
+
+/* ── Stat Card ── */
+.stat-value {
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+/* ── Tooltip ── */
+.custom-tooltip {
+  position: absolute;
+  z-index: 100;
+  background: var(--bg-card);
+  border: 1px solid var(--border-glow);
+  border-radius: var(--radius-md);
+  padding: 12px 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(12px);
+  pointer-events: none;
+  max-width: 280px;
+}
+
+/* ── Ticker ── */
+@keyframes ticker-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.ticker-wrap {
+  overflow: hidden;
+  width: 100%;
+}
+.ticker-content {
+  display: flex;
+  gap: 32px;
+  animation: ticker-scroll 30s linear infinite;
+  white-space: nowrap;
+}
+
+/* ── Download Button ── */
+.btn-download {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: rgba(99, 102, 241, 0.12);
+  color: var(--accent-indigo);
+  border: 1px solid rgba(99, 102, 241, 0.25);
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.btn-download:hover {
+  background: rgba(99, 102, 241, 0.2);
+  border-color: rgba(99, 102, 241, 0.4);
+  transform: translateY(-1px);
+}
+
+/* ── Section Title ── */
+.section-title {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+}
+
+/* ── Domain group colors ── */
+.domain-google { color: #60a5fa; }
+.domain-meta { color: #818cf8; }
+.domain-amazon { color: #f59e0b; }
+.domain-microsoft { color: #34d399; }
+.domain-other { color: #94a3b8; }
+
+/* ── Ambient background ── */
+.ambient-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+.ambient-bg::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(ellipse at 20% 50%, rgba(139, 92, 246, 0.05) 0%, transparent 50%),
+              radial-gradient(ellipse at 80% 20%, rgba(167, 139, 250, 0.03) 0%, transparent 50%),
+              radial-gradient(ellipse at 60% 80%, rgba(99, 102, 241, 0.03) 0%, transparent 50%);
+}
+</file>
+
+<file path="cookie/frontend/app/layout.tsx">
+import type { Metadata } from "next";
+import { Inter, JetBrains_Mono } from "next/font/google";
+import "./globals.css";
+
+const inter = Inter({
+  variable: "--font-inter",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-jetbrains",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+export const metadata: Metadata = {
+  title: "Cookie Tracker Graph — Real Rails Intelligence Library",
+  description:
+    "Visualize the hidden tracker graph triggered by a single page load. See how first-party and third-party requests flow through ad networks to data brokers. A Distribution & Demand rail demo.",
+  keywords: ["cookie tracking", "privacy", "ad tech", "data brokers", "GDELT", "tracker graph"],
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html
+      lang="en"
+      className={`${inter.variable} ${jetbrainsMono.variable} h-full antialiased`}
+    >
+      <body className="min-h-full flex flex-col">{children}</body>
+    </html>
+  );
+}
+</file>
+
+<file path="cookie/frontend/app/lib/data.ts">
+import type {
+  TrackerNode,
+  TrackerEdge,
+  WaterfallEntry,
+  DomainGroup,
+  PerformanceMetrics,
+  GdeltEvent,
+} from './types';
+
+// ── Synthetic Tracker Nodes ──
+// Simulates all third-party requests triggered by a single page load on a news portal
+
+export const trackerNodes: TrackerNode[] = [
+  // Origin
+  {
+    id: 'origin',
+    label: 'news-portal.com',
+    type: 'origin',
+    domain: 'news-portal.com',
+    group: 'Publisher',
+    cookieCount: 2,
+    dataCollected: ['session_id', 'preferences'],
+    purpose: 'Main news website — the page you visited.',
+    latencyMs: 45,
+    sizeKb: 312,
+    consentRequired: false,
+  },
+  // First-party
+  {
+    id: 'fp_cdn',
+    label: 'CDN Assets',
+    type: 'cdn',
+    domain: 'cdn.news-portal.com',
+    group: 'Publisher',
+    cookieCount: 0,
+    dataCollected: [],
+    purpose: 'Serves static assets (images, CSS, JS) for the news site.',
+    latencyMs: 12,
+    sizeKb: 890,
+    initiator: 'origin',
+    consentRequired: false,
+  },
+  {
+    id: 'fp_api',
+    label: 'Content API',
+    type: 'first-party',
+    domain: 'api.news-portal.com',
+    group: 'Publisher',
+    cookieCount: 1,
+    dataCollected: ['session_token'],
+    purpose: 'Fetches article content and personalization data.',
+    latencyMs: 85,
+    sizeKb: 44,
+    initiator: 'origin',
+    consentRequired: false,
+  },
+
+  // Google Ecosystem
+  {
+    id: 'ga4',
+    label: 'Google Analytics 4',
+    type: 'analytics',
+    domain: 'analytics.google.com',
+    group: 'Google',
+    cookieCount: 4,
+    dataCollected: ['page_views', 'scroll_depth', 'click_events', 'user_id', 'demographics'],
+    purpose: 'Tracks user behavior for site analytics and audience segmentation.',
+    latencyMs: 120,
+    sizeKb: 78,
+    initiator: 'origin',
+    consentRequired: true,
+  },
+  {
+    id: 'gtm',
+    label: 'Google Tag Manager',
+    type: 'tracker',
+    domain: 'googletagmanager.com',
+    group: 'Google',
+    cookieCount: 2,
+    dataCollected: ['tag_firing', 'consent_state', 'custom_events'],
+    purpose: 'Orchestrates all other tracking scripts on the page.',
+    latencyMs: 95,
+    sizeKb: 112,
+    initiator: 'origin',
+    consentRequired: true,
+  },
+  {
+    id: 'gads',
+    label: 'Google Ads',
+    type: 'ad-network',
+    domain: 'googlesyndication.com',
+    group: 'Google',
+    cookieCount: 6,
+    dataCollected: ['ad_clicks', 'conversion_data', 'audience_segments', 'remarketing_lists'],
+    purpose: 'Serves targeted ads and tracks conversions across the Google ad network.',
+    latencyMs: 210,
+    sizeKb: 156,
+    initiator: 'gtm',
+    consentRequired: true,
+  },
+  {
+    id: 'g_dcm',
+    label: 'DoubleClick',
+    type: 'ad-network',
+    domain: 'doubleclick.net',
+    group: 'Google',
+    cookieCount: 8,
+    dataCollected: ['impression_data', 'frequency_cap', 'cross_site_id', 'bid_requests'],
+    purpose: 'Cross-site ad serving and user profiling across publisher network.',
+    latencyMs: 180,
+    sizeKb: 42,
+    initiator: 'gads',
+    consentRequired: true,
+  },
+
+  // Meta / Facebook
+  {
+    id: 'fb_pixel',
+    label: 'Meta Pixel',
+    type: 'tracker',
+    domain: 'connect.facebook.net',
+    group: 'Meta',
+    cookieCount: 5,
+    dataCollected: ['page_view', 'add_to_cart', 'purchase', 'custom_audiences', 'fb_user_id'],
+    purpose: 'Tracks user actions for Facebook ad targeting and conversion measurement.',
+    latencyMs: 165,
+    sizeKb: 88,
+    initiator: 'origin',
+    consentRequired: true,
+  },
+  {
+    id: 'fb_audience',
+    label: 'Audience Network',
+    type: 'ad-network',
+    domain: 'an.facebook.com',
+    group: 'Meta',
+    cookieCount: 3,
+    dataCollected: ['audience_segments', 'lookalike_data', 'interest_categories'],
+    purpose: 'Extends Facebook ad targeting to third-party apps and websites.',
+    latencyMs: 190,
+    sizeKb: 34,
+    initiator: 'fb_pixel',
+    consentRequired: true,
+  },
+
+  // Amazon
+  {
+    id: 'amzn_ads',
+    label: 'Amazon Ads',
+    type: 'ad-network',
+    domain: 'amazon-adsystem.com',
+    group: 'Amazon',
+    cookieCount: 4,
+    dataCollected: ['purchase_intent', 'product_views', 'shopping_behavior', 'demographic_data'],
+    purpose: 'Serves product-targeted ads based on Amazon shopping data.',
+    latencyMs: 145,
+    sizeKb: 62,
+    initiator: 'gtm',
+    consentRequired: true,
+  },
+
+  // Data Brokers
+  {
+    id: 'oracle_data',
+    label: 'Oracle Data Cloud',
+    type: 'broker',
+    domain: 'bluekai.com',
+    group: 'Oracle',
+    cookieCount: 7,
+    dataCollected: ['offline_purchases', 'credit_data', 'demographic_profile', 'location_history'],
+    purpose: 'Aggregates offline and online data for cross-platform audience targeting.',
+    latencyMs: 230,
+    sizeKb: 28,
+    initiator: 'g_dcm',
+    consentRequired: true,
+  },
+  {
+    id: 'lotame',
+    label: 'Lotame DMP',
+    type: 'broker',
+    domain: 'crwdcntrl.net',
+    group: 'Lotame',
+    cookieCount: 5,
+    dataCollected: ['behavioral_segments', 'interest_graph', 'device_graph'],
+    purpose: 'Data management platform that builds audience profiles for resale.',
+    latencyMs: 195,
+    sizeKb: 22,
+    initiator: 'gads',
+    consentRequired: true,
+  },
+
+  // Social & Misc
+  {
+    id: 'twitter_pixel',
+    label: 'X/Twitter Pixel',
+    type: 'social',
+    domain: 'analytics.twitter.com',
+    group: 'X/Twitter',
+    cookieCount: 3,
+    dataCollected: ['page_view', 'tweet_engagement', 'conversion_events'],
+    purpose: 'Tracks user actions for Twitter ad campaigns.',
+    latencyMs: 140,
+    sizeKb: 46,
+    initiator: 'gtm',
+    consentRequired: true,
+  },
+  {
+    id: 'hotjar',
+    label: 'Hotjar',
+    type: 'analytics',
+    domain: 'hotjar.com',
+    group: 'Hotjar',
+    cookieCount: 3,
+    dataCollected: ['heatmaps', 'session_recordings', 'form_analytics', 'click_maps'],
+    purpose: 'Records user sessions and generates heatmaps for UX analysis.',
+    latencyMs: 175,
+    sizeKb: 94,
+    initiator: 'gtm',
+    consentRequired: true,
+  },
+  {
+    id: 'criteo',
+    label: 'Criteo Retargeting',
+    type: 'ad-network',
+    domain: 'criteo.com',
+    group: 'Criteo',
+    cookieCount: 6,
+    dataCollected: ['product_views', 'cart_data', 'retargeting_segments', 'bid_data'],
+    purpose: 'Dynamic retargeting — follows users across sites with product ads they viewed.',
+    latencyMs: 200,
+    sizeKb: 38,
+    initiator: 'gtm',
+    consentRequired: true,
+  },
+  {
+    id: 'tiktok',
+    label: 'TikTok Pixel',
+    type: 'social',
+    domain: 'analytics.tiktok.com',
+    group: 'TikTok',
+    cookieCount: 3,
+    dataCollected: ['page_view', 'video_engagement', 'purchase_events'],
+    purpose: 'Tracks user actions for TikTok ad campaign optimization.',
+    latencyMs: 155,
+    sizeKb: 52,
+    initiator: 'gtm',
+    consentRequired: true,
+  },
+];
+
+// ── Edges ──
+export const trackerEdges: TrackerEdge[] = [
+  // Origin → First-party
+  { source: 'origin', target: 'fp_cdn', dataFlow: 'Static assets', encrypted: true, crossOrigin: false },
+  { source: 'origin', target: 'fp_api', dataFlow: 'Content & auth', encrypted: true, crossOrigin: false },
+
+  // Origin → Trackers (direct)
+  { source: 'origin', target: 'ga4', dataFlow: 'Analytics events', encrypted: true, crossOrigin: true },
+  { source: 'origin', target: 'gtm', dataFlow: 'Tag configuration', encrypted: true, crossOrigin: true },
+  { source: 'origin', target: 'fb_pixel', dataFlow: 'Pixel events', encrypted: true, crossOrigin: true },
+
+  // GTM orchestrates others
+  { source: 'gtm', target: 'gads', dataFlow: 'Ad conversion data', encrypted: true, crossOrigin: true },
+  { source: 'gtm', target: 'amzn_ads', dataFlow: 'Shopping intent', encrypted: true, crossOrigin: true },
+  { source: 'gtm', target: 'twitter_pixel', dataFlow: 'Social events', encrypted: true, crossOrigin: true },
+  { source: 'gtm', target: 'hotjar', dataFlow: 'Session data', encrypted: true, crossOrigin: true },
+  { source: 'gtm', target: 'criteo', dataFlow: 'Retargeting events', encrypted: true, crossOrigin: true },
+  { source: 'gtm', target: 'tiktok', dataFlow: 'Engagement events', encrypted: true, crossOrigin: true },
+
+  // Google internal chain
+  { source: 'gads', target: 'g_dcm', dataFlow: 'Bid requests + user ID', encrypted: true, crossOrigin: true },
+
+  // Meta internal chain
+  { source: 'fb_pixel', target: 'fb_audience', dataFlow: 'Audience segments', encrypted: true, crossOrigin: true },
+
+  // Data broker connections
+  { source: 'g_dcm', target: 'oracle_data', dataFlow: 'Cross-device ID graph', encrypted: true, crossOrigin: true },
+  { source: 'gads', target: 'lotame', dataFlow: 'Behavioral segments', encrypted: true, crossOrigin: true },
+  { source: 'criteo', target: 'lotame', dataFlow: 'Product interest data', encrypted: true, crossOrigin: true },
+];
+
+// ── Domain Groups ──
+export const domainGroups: DomainGroup[] = [
+  {
+    name: 'Google',
+    color: '#60a5fa',
+    trackerCount: 4,
+    cookieCount: 20,
+    dataTypes: ['Analytics', 'Ads', 'Conversions', 'Remarketing', 'Audience'],
+    revenueModel: 'Ad auctions (real-time bidding)',
+    marketShare: '28.6% of digital ad market',
+  },
+  {
+    name: 'Meta',
+    color: '#818cf8',
+    trackerCount: 2,
+    cookieCount: 8,
+    dataTypes: ['Social Graph', 'Purchase Events', 'Custom Audiences'],
+    revenueModel: 'Targeted social advertising',
+    marketShare: '20.1% of digital ad market',
+  },
+  {
+    name: 'Amazon',
+    color: '#f59e0b',
+    trackerCount: 1,
+    cookieCount: 4,
+    dataTypes: ['Shopping Behavior', 'Purchase Intent'],
+    revenueModel: 'Product-targeted display ads',
+    marketShare: '12.4% of digital ad market',
+  },
+  {
+    name: 'Oracle',
+    color: '#f97316',
+    trackerCount: 1,
+    cookieCount: 7,
+    dataTypes: ['Offline Data', 'Credit Scores', 'Demographics'],
+    revenueModel: 'Data licensing & audience resale',
+    marketShare: 'Largest third-party data provider',
+  },
+  {
+    name: 'Lotame',
+    color: '#fb7185',
+    trackerCount: 1,
+    cookieCount: 5,
+    dataTypes: ['Behavioral Segments', 'Interest Graph'],
+    revenueModel: 'DMP licensing & segment sales',
+    marketShare: '~3% of DMP market',
+  },
+  {
+    name: 'Criteo',
+    color: '#e879f9',
+    trackerCount: 1,
+    cookieCount: 6,
+    dataTypes: ['Product Views', 'Cart Data', 'Retargeting'],
+    revenueModel: 'Dynamic retargeting CPC',
+    marketShare: '~5% of retargeting market',
+  },
+];
+
+// ── Waterfall Data ──
+export function generateWaterfall(consent: boolean): WaterfallEntry[] {
+  const entries: WaterfallEntry[] = [
+    { id: 'origin', label: 'news-portal.com', domain: 'news-portal.com', type: 'origin', startMs: 0, durationMs: 45, sizeKb: 312, status: 200, method: 'GET', initiator: 'browser' },
+    { id: 'fp_cdn', label: 'cdn.news-portal.com/assets', domain: 'cdn.news-portal.com', type: 'cdn', startMs: 50, durationMs: 12, sizeKb: 890, status: 200, method: 'GET', initiator: 'origin' },
+    { id: 'fp_api', label: 'api.news-portal.com/v2/articles', domain: 'api.news-portal.com', type: 'first-party', startMs: 55, durationMs: 85, sizeKb: 44, status: 200, method: 'GET', initiator: 'origin' },
+  ];
+
+  if (consent) {
+    entries.push(
+      { id: 'gtm', label: 'googletagmanager.com/gtm.js', domain: 'googletagmanager.com', type: 'tracker', startMs: 95, durationMs: 95, sizeKb: 112, status: 200, method: 'GET', initiator: 'origin' },
+      { id: 'ga4', label: 'analytics.google.com/collect', domain: 'analytics.google.com', type: 'analytics', startMs: 100, durationMs: 120, sizeKb: 78, status: 204, method: 'POST', initiator: 'origin' },
+      { id: 'fb_pixel', label: 'connect.facebook.net/fbevents.js', domain: 'connect.facebook.net', type: 'tracker', startMs: 140, durationMs: 165, sizeKb: 88, status: 200, method: 'GET', initiator: 'origin' },
+      { id: 'hotjar', label: 'hotjar.com/hj-script.js', domain: 'hotjar.com', type: 'analytics', startMs: 200, durationMs: 175, sizeKb: 94, status: 200, method: 'GET', initiator: 'gtm' },
+      { id: 'gads', label: 'googlesyndication.com/tag/js', domain: 'googlesyndication.com', type: 'ad-network', startMs: 210, durationMs: 210, sizeKb: 156, status: 200, method: 'GET', initiator: 'gtm' },
+      { id: 'twitter_pixel', label: 'analytics.twitter.com/i/adsct', domain: 'analytics.twitter.com', type: 'social', startMs: 220, durationMs: 140, sizeKb: 46, status: 204, method: 'POST', initiator: 'gtm' },
+      { id: 'tiktok', label: 'analytics.tiktok.com/pixel.js', domain: 'analytics.tiktok.com', type: 'social', startMs: 230, durationMs: 155, sizeKb: 52, status: 200, method: 'GET', initiator: 'gtm' },
+      { id: 'criteo', label: 'criteo.com/js/ld/ld.js', domain: 'criteo.com', type: 'ad-network', startMs: 250, durationMs: 200, sizeKb: 38, status: 200, method: 'GET', initiator: 'gtm' },
+      { id: 'amzn_ads', label: 'amazon-adsystem.com/aax2', domain: 'amazon-adsystem.com', type: 'ad-network', startMs: 260, durationMs: 145, sizeKb: 62, status: 200, method: 'GET', initiator: 'gtm' },
+      { id: 'fb_audience', label: 'an.facebook.com/signals', domain: 'an.facebook.com', type: 'ad-network', startMs: 310, durationMs: 190, sizeKb: 34, status: 204, method: 'POST', initiator: 'fb_pixel' },
+      { id: 'g_dcm', label: 'doubleclick.net/gampad/ads', domain: 'doubleclick.net', type: 'ad-network', startMs: 430, durationMs: 180, sizeKb: 42, status: 200, method: 'GET', initiator: 'gads' },
+      { id: 'oracle_data', label: 'bluekai.com/tags', domain: 'bluekai.com', type: 'broker', startMs: 620, durationMs: 230, sizeKb: 28, status: 204, method: 'POST', initiator: 'g_dcm' },
+      { id: 'lotame', label: 'crwdcntrl.net/5/c=12345', domain: 'crwdcntrl.net', type: 'broker', startMs: 450, durationMs: 195, sizeKb: 22, status: 204, method: 'POST', initiator: 'gads' },
+    );
+  }
+
+  return entries;
+}
+
+// ── Performance Calculator ──
+export function calculatePerformance(waterfall: WaterfallEntry[]): PerformanceMetrics {
+  const trackerEntries = waterfall.filter(
+    (e) => e.type !== 'origin' && e.type !== 'first-party' && e.type !== 'cdn'
+  );
+  const allEntries = waterfall;
+
+  const totalSizeKb = allEntries.reduce((sum, e) => sum + e.sizeKb, 0);
+  const trackerSizeKb = trackerEntries.reduce((sum, e) => sum + e.sizeKb, 0);
+
+  const totalTimeMs = Math.max(...allEntries.map((e) => e.startMs + e.durationMs));
+  const trackerTimeMs = trackerEntries.length
+    ? Math.max(...trackerEntries.map((e) => e.startMs + e.durationMs)) -
+      Math.min(...trackerEntries.map((e) => e.startMs))
+    : 0;
+
+  return {
+    totalRequests: allEntries.length,
+    trackerRequests: trackerEntries.length,
+    totalSizeKb,
+    trackerSizeKb,
+    totalTimeMs,
+    trackerTimeMs,
+    domContentLoaded: trackerEntries.length > 0 ? 420 : 140,
+    firstPaint: trackerEntries.length > 0 ? 280 : 95,
+    largestContentfulPaint: trackerEntries.length > 0 ? 1850 : 620,
+    trackerPercentage: Math.round((trackerEntries.length / allEntries.length) * 100),
+  };
+}
+
+// ── GDELT Synthetic Events ──
+// Well-labeled synthetic data based on real GDELT event themes
+export const gdeltEvents: GdeltEvent[] = [
+  {
+    id: 'gdelt_001',
+    date: '2026-05-03',
+    title: 'EU Regulators Fine Meta €1.2B Over Cross-Border Data Transfers',
+    sourceUrl: 'https://gdelt.example.com/event/eu-meta-fine',
+    tone: -4.2,
+    relevance: 0.95,
+    theme: 'REGULATION',
+    trackerCategory: 'Meta Pixel / Audience Network',
+  },
+  {
+    id: 'gdelt_002',
+    date: '2026-05-02',
+    title: 'Google Delays Third-Party Cookie Deprecation to 2027',
+    sourceUrl: 'https://gdelt.example.com/event/google-cookie-delay',
+    tone: -2.1,
+    relevance: 0.98,
+    theme: 'INDUSTRY_SHIFT',
+    trackerCategory: 'Google Ads / DoubleClick',
+  },
+  {
+    id: 'gdelt_003',
+    date: '2026-04-29',
+    title: 'Apple Expands App Tracking Transparency to Safari Extensions',
+    sourceUrl: 'https://gdelt.example.com/event/apple-att-safari',
+    tone: 1.8,
+    relevance: 0.87,
+    theme: 'PLATFORM_POLICY',
+    trackerCategory: 'Cross-platform trackers',
+  },
+  {
+    id: 'gdelt_004',
+    date: '2026-04-27',
+    title: 'US Federal Privacy Bill Gains Bipartisan Support in Senate',
+    sourceUrl: 'https://gdelt.example.com/event/us-privacy-bill',
+    tone: 0.5,
+    relevance: 0.82,
+    theme: 'REGULATION',
+    trackerCategory: 'Data brokers / Oracle Data Cloud',
+  },
+  {
+    id: 'gdelt_005',
+    date: '2026-04-25',
+    title: 'TikTok Fined Under GDPR for Inadequate Age Verification Tracking',
+    sourceUrl: 'https://gdelt.example.com/event/tiktok-gdpr',
+    tone: -3.6,
+    relevance: 0.79,
+    theme: 'REGULATION',
+    trackerCategory: 'TikTok Pixel',
+  },
+  {
+    id: 'gdelt_006',
+    date: '2026-04-22',
+    title: 'Criteo Reports 40% Revenue Drop as Retargeting Faces Cookie Limits',
+    sourceUrl: 'https://gdelt.example.com/event/criteo-revenue',
+    tone: -5.1,
+    relevance: 0.91,
+    theme: 'MARKET_IMPACT',
+    trackerCategory: 'Criteo Retargeting',
+  },
+  {
+    id: 'gdelt_007',
+    date: '2026-04-20',
+    title: 'IAB Publishes New Standards for Consent Management Platforms',
+    sourceUrl: 'https://gdelt.example.com/event/iab-consent',
+    tone: 2.3,
+    relevance: 0.74,
+    theme: 'INDUSTRY_SHIFT',
+    trackerCategory: 'All consent-dependent trackers',
+  },
+  {
+    id: 'gdelt_008',
+    date: '2026-04-18',
+    title: 'Study: Average News Site Fires 42 Trackers Per Page Load',
+    sourceUrl: 'https://gdelt.example.com/event/tracker-study',
+    tone: -3.8,
+    relevance: 0.96,
+    theme: 'RESEARCH',
+    trackerCategory: 'All tracker categories',
+  },
+];
+
+// ── Download Helpers ──
+export function downloadJSON(data: unknown, filename: string): void {
+  const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = filename;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+export function downloadCSV(rows: Record<string, unknown>[], filename: string): void {
+  if (rows.length === 0) return;
+  const headers = Object.keys(rows[0]);
+  const csv = [
+    headers.join(','),
+    ...rows.map((row) =>
+      headers.map((h) => {
+        const val = row[h];
+        const str = Array.isArray(val) ? val.join('; ') : String(val ?? '');
+        return `"${str.replace(/"/g, '""')}"`;
+      }).join(',')
+    ),
+  ].join('\n');
+  const blob = new Blob([csv], { type: 'text/csv' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = filename;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+// ── Color Helpers ──
+export function getTypeColor(type: TrackerNode['type']): string {
+  const colors: Record<string, string> = {
+    origin: '#3b82f6',
+    'first-party': '#06b6d4',
+    cdn: '#10b981',
+    analytics: '#8b5cf6',
+    tracker: '#f43f5e',
+    'ad-network': '#f97316',
+    broker: '#ef4444',
+    social: '#ec4899',
+  };
+  return colors[type] || '#64748b';
+}
+
+export function getGroupColor(group: string): string {
+  const colors: Record<string, string> = {
+    Publisher: '#06b6d4',
+    Google: '#60a5fa',
+    Meta: '#818cf8',
+    Amazon: '#f59e0b',
+    Oracle: '#f97316',
+    Lotame: '#fb7185',
+    Criteo: '#e879f9',
+    'X/Twitter': '#94a3b8',
+    Hotjar: '#34d399',
+    TikTok: '#f472b6',
+  };
+  return colors[group] || '#64748b';
+}
+
+export function getTypeBadgeClass(type: TrackerNode['type']): string {
+  const classes: Record<string, string> = {
+    origin: 'badge-first-party',
+    'first-party': 'badge-first-party',
+    cdn: 'badge-cdn',
+    analytics: 'badge-analytics',
+    tracker: 'badge-tracker',
+    'ad-network': 'badge-tracker',
+    broker: 'badge-broker',
+    social: 'badge-analytics',
+  };
+  return classes[type] || 'badge-first-party';
+}
+</file>
+
+<file path="cookie/frontend/app/lib/types.ts">
+// ── Core Domain Types ──
+
+export interface TrackerNode {
+  id: string;
+  label: string;
+  type: 'origin' | 'first-party' | 'tracker' | 'analytics' | 'ad-network' | 'broker' | 'cdn' | 'social';
+  domain: string;
+  group: string;
+  cookieCount: number;
+  dataCollected: string[];
+  purpose: string;
+  blocked?: boolean;
+  latencyMs: number;
+  sizeKb: number;
+  initiator?: string;
+  consentRequired: boolean;
+}
+
+export interface TrackerEdge {
+  source: string;
+  target: string;
+  dataFlow: string;
+  encrypted: boolean;
+  crossOrigin: boolean;
+}
+
+export interface WaterfallEntry {
+  id: string;
+  label: string;
+  domain: string;
+  type: TrackerNode['type'];
+  startMs: number;
+  durationMs: number;
+  sizeKb: number;
+  status: number;
+  method: 'GET' | 'POST' | 'CONNECT';
+  initiator: string;
+  blocked?: boolean;
+}
+
+export interface DomainGroup {
+  name: string;
+  color: string;
+  trackerCount: number;
+  cookieCount: number;
+  dataTypes: string[];
+  revenueModel: string;
+  marketShare: string;
+}
+
+export interface PerformanceMetrics {
+  totalRequests: number;
+  trackerRequests: number;
+  totalSizeKb: number;
+  trackerSizeKb: number;
+  totalTimeMs: number;
+  trackerTimeMs: number;
+  domContentLoaded: number;
+  firstPaint: number;
+  largestContentfulPaint: number;
+  trackerPercentage: number;
+}
+
+export interface GdeltEvent {
+  id: string;
+  date: string;
+  title: string;
+  sourceUrl: string;
+  tone: number;
+  relevance: number;
+  theme: string;
+  trackerCategory: string;
+}
+
+export interface ConsentState {
+  necessary: boolean;
+  analytics: boolean;
+  marketing: boolean;
+  social: boolean;
+  thirdParty: boolean;
+}
+
+export interface FilterState {
+  domain: string;
+  type: string;
+  group: string;
+  search: string;
+}
+</file>
+
+<file path="cookie/frontend/app/page.tsx">
+'use client';
+
+import React, { useState, useMemo } from 'react';
+import { motion } from 'framer-motion';
+import Header from './components/Header';
+import TrackerGraph from './components/TrackerGraph';
+import FilterBar from './components/FilterBar';
+import DnaBackground from './components/DnaBackground';
+import IntelligencePanel from './components/IntelligencePanel';
+import {
+  trackerNodes,
+  trackerEdges,
+  generateWaterfall,
+  calculatePerformance,
+} from './lib/data';
+import type { ConsentState, TrackerNode } from './lib/types';
+
+export default function CookieTrackerDashboard() {
+  const [consent, setConsent] = useState<ConsentState>({
+    necessary: true,
+    analytics: true,
+    marketing: true,
+    social: true,
+    thirdParty: true,
+  });
+
+  const [filter, setFilter] = useState('all');
+  const [groupBy, setGroupBy] = useState<'type' | 'group'>('group');
+  const [selectedNode, setSelectedNode] = useState<TrackerNode | null>(null);
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [hoveredWaterfall, setHoveredWaterfall] = useState<string | null>(null);
+  const [isPanelOpen, setIsPanelOpen] = useState(false);
+
+  const consentActive = consent.analytics || consent.marketing || consent.social;
+
+  const waterfall = useMemo(() => generateWaterfall(consentActive), [consentActive]);
+  const waterfallClean = useMemo(() => generateWaterfall(false), []);
+  const perfWith = useMemo(() => calculatePerformance(generateWaterfall(true)), []);
+  const perfWithout = useMemo(() => calculatePerformance(waterfallClean), [waterfallClean]);
+
+  // Handle node selection from graph
+  const handleNodeSelect = (node: TrackerNode | null) => {
+    setSelectedNode(node);
+    if (node) {
+      setSelectedCategory(null); // Clear category selection if clicking node
+      setIsPanelOpen(true);
+    }
+  };
+
+  // Handle category selection from legend
+  const handleCategorySelect = (category: string | null) => {
+    setSelectedCategory(category);
+    if (category) {
+      setSelectedNode(null); // Clear node selection if clicking category marker
+      setIsPanelOpen(true);
+    }
+  };
+
+  return (
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        height: '100vh',
+        background: 'var(--bg-void)',
+        position: 'relative',
+        overflow: 'hidden',
+      }}
+    >
+      {/* Premium Canvas DNA Background */}
+      <DnaBackground />
+
+      {/* Header */}
+      <Header onToggleOverview={() => setIsPanelOpen(!isPanelOpen)} />
+
+      {/* Full-Screen Workspace */}
+      <div
+        style={{
+          flex: 1,
+          display: 'flex',
+          flexDirection: 'column',
+          position: 'relative',
+          overflow: 'hidden',
+          zIndex: 1,
+        }}
+      >
+        {/* Floating FilterBar overlay */}
+        <div
+          style={{
+            position: 'absolute',
+            top: '20px',
+            left: '20px',
+            right: '20px',
+            zIndex: 10,
+          }}
+        >
+          <FilterBar
+            filter={filter}
+            onFilterChange={setFilter}
+            groupBy={groupBy}
+            onGroupByChange={setGroupBy}
+            selectedCategory={selectedCategory}
+            onCategorySelect={handleCategorySelect}
+          />
+        </div>
+
+        {/* 100% Full-Screen Graph Workspace */}
+        <div style={{ flex: 1, width: '100%', height: '100%', position: 'relative' }}>
+          <TrackerGraph
+            nodes={trackerNodes}
+            edges={trackerEdges}
+            consent={consent}
+            filter={filter}
+            groupBy={groupBy}
+            onNodeSelect={handleNodeSelect}
+            selectedNodeId={selectedNode?.id || null}
+            selectedCategory={selectedCategory}
+          />
+        </div>
+
+        {/* Floating System Panel trigger on the right screen edge */}
+        {!isPanelOpen && (
+          <motion.button
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            onClick={() => setIsPanelOpen(true)}
+            style={{
+              position: 'absolute',
+              right: 0,
+              top: '50%',
+              transform: 'translateY(-50%)',
+              zIndex: 20,
+              background: 'var(--bg-card)',
+              border: '1px solid var(--border-accent)',
+              borderRight: 'none',
+              borderRadius: '12px 0 0 12px',
+              padding: '16px 8px',
+              color: 'var(--text-accent)',
+              cursor: 'pointer',
+              fontSize: '10px',
+              fontWeight: 700,
+              writingMode: 'vertical-rl',
+              textTransform: 'uppercase',
+              letterSpacing: '0.08em',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '6px',
+              boxShadow: '-4px 0 16px rgba(139, 92, 246, 0.15)',
+              backdropFilter: 'blur(10px)',
+            }}
+            whileHover={{ scale: 1.05, background: 'var(--bg-elevated)' }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <span>📡</span> System Panel
+          </motion.button>
+        )}
+      </div>
+
+      {/* Slide-over Intelligence Panel */}
+      <IntelligencePanel
+        isOpen={isPanelOpen}
+        onClose={() => setIsPanelOpen(false)}
+        selectedNode={selectedNode}
+        onNodeSelect={handleNodeSelect}
+        selectedCategory={selectedCategory}
+        onCategorySelect={handleCategorySelect}
+        consent={consent}
+        onConsentChange={setConsent}
+        waterfall={waterfall}
+        perfWith={perfWith}
+        perfWithout={perfWithout}
+        consentActive={consentActive}
+        hoveredWaterfall={hoveredWaterfall}
+        setHoveredWaterfall={setHoveredWaterfall}
+      />
+    </div>
+  );
+}
+</file>
+
+<file path="cookie/frontend/CLAUDE.md">
+@AGENTS.md
+</file>
+
+<file path="cookie/frontend/eslint.config.mjs">
+import { defineConfig, globalIgnores } from "eslint/config";
+import nextVitals from "eslint-config-next/core-web-vitals";
+import nextTs from "eslint-config-next/typescript";
+
+const eslintConfig = defineConfig([
+  ...nextVitals,
+  ...nextTs,
+  // Override default ignores of eslint-config-next.
+  globalIgnores([
+    // Default ignores of eslint-config-next:
+    ".next/**",
+    "out/**",
+    "build/**",
+    "next-env.d.ts",
+  ]),
+]);
+
+export default eslintConfig;
+</file>
+
+<file path="cookie/frontend/next.config.ts">
+import type { NextConfig } from "next";
+
+const nextConfig: NextConfig = {
+  /* config options here */
+};
+
+export default nextConfig;
+</file>
+
+<file path="cookie/frontend/package.json">
+{
+  "name": "frontend",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint"
+  },
+  "dependencies": {
+    "@types/d3": "^7.4.3",
+    "@xyflow/react": "^12.10.2",
+    "d3": "^7.9.0",
+    "framer-motion": "^12.38.0",
+    "lucide-react": "^1.14.0",
+    "next": "16.2.4",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "reactflow": "^11.11.4"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.4",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}
+</file>
+
+<file path="cookie/frontend/postcss.config.mjs">
+const config = {
+  plugins: {
+    "@tailwindcss/postcss": {},
+  },
+};
+
+export default config;
+</file>
+
+<file path="cookie/frontend/public/file.svg">
+<svg fill="none" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M14.5 13.5V5.41a1 1 0 0 0-.3-.7L9.8.29A1 1 0 0 0 9.08 0H1.5v13.5A2.5 2.5 0 0 0 4 16h8a2.5 2.5 0 0 0 2.5-2.5m-1.5 0v-7H8v-5H3v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1M9.5 5V2.12L12.38 5zM5.13 5h-.62v1.25h2.12V5zm-.62 3h7.12v1.25H4.5zm.62 3h-.62v1.25h7.12V11z" clip-rule="evenodd" fill="#666" fill-rule="evenodd"/></svg>
+</file>
+
+<file path="cookie/frontend/public/globe.svg">
+<svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><g clip-path="url(#a)"><path fill-rule="evenodd" clip-rule="evenodd" d="M10.27 14.1a6.5 6.5 0 0 0 3.67-3.45q-1.24.21-2.7.34-.31 1.83-.97 3.1M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.48-1.52a7 7 0 0 1-.96 0H7.5a4 4 0 0 1-.84-1.32q-.38-.89-.63-2.08a40 40 0 0 0 3.92 0q-.25 1.2-.63 2.08a4 4 0 0 1-.84 1.31zm2.94-4.76q1.66-.15 2.95-.43a7 7 0 0 0 0-2.58q-1.3-.27-2.95-.43a18 18 0 0 1 0 3.44m-1.27-3.54a17 17 0 0 1 0 3.64 39 39 0 0 1-4.3 0 17 17 0 0 1 0-3.64 39 39 0 0 1 4.3 0m1.1-1.17q1.45.13 2.69.34a6.5 6.5 0 0 0-3.67-3.44q.65 1.26.98 3.1M8.48 1.5l.01.02q.41.37.84 1.31.38.89.63 2.08a40 40 0 0 0-3.92 0q.25-1.2.63-2.08a4 4 0 0 1 .85-1.32 7 7 0 0 1 .96 0m-2.75.4a6.5 6.5 0 0 0-3.67 3.44 29 29 0 0 1 2.7-.34q.31-1.83.97-3.1M4.58 6.28q-1.66.16-2.95.43a7 7 0 0 0 0 2.58q1.3.27 2.95.43a18 18 0 0 1 0-3.44m.17 4.71q-1.45-.12-2.69-.34a6.5 6.5 0 0 0 3.67 3.44q-.65-1.27-.98-3.1" fill="#666"/></g><defs><clipPath id="a"><path fill="#fff" d="M0 0h16v16H0z"/></clipPath></defs></svg>
+</file>
+
+<file path="cookie/frontend/public/next.svg">
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 394 80"><path fill="#000" d="M262 0h68.5v12.7h-27.2v66.6h-13.6V12.7H262V0ZM149 0v12.7H94v20.4h44.3v12.6H94v21h55v12.6H80.5V0h68.7zm34.3 0h-17.8l63.8 79.4h17.9l-32-39.7 32-39.6h-17.9l-23 28.6-23-28.6zm18.3 56.7-9-11-27.1 33.7h17.8l18.3-22.7z"/><path fill="#000" d="M81 79.3 17 0H0v79.3h13.6V17l50.2 62.3H81Zm252.6-.4c-1 0-1.8-.4-2.5-1s-1.1-1.6-1.1-2.6.3-1.8 1-2.5 1.6-1 2.6-1 1.8.3 2.5 1a3.4 3.4 0 0 1 .6 4.3 3.7 3.7 0 0 1-3 1.8zm23.2-33.5h6v23.3c0 2.1-.4 4-1.3 5.5a9.1 9.1 0 0 1-3.8 3.5c-1.6.8-3.5 1.3-5.7 1.3-2 0-3.7-.4-5.3-1s-2.8-1.8-3.7-3.2c-.9-1.3-1.4-3-1.4-5h6c.1.8.3 1.6.7 2.2s1 1.2 1.6 1.5c.7.4 1.5.5 2.4.5 1 0 1.8-.2 2.4-.6a4 4 0 0 0 1.6-1.8c.3-.8.5-1.8.5-3V45.5zm30.9 9.1a4.4 4.4 0 0 0-2-3.3 7.5 7.5 0 0 0-4.3-1.1c-1.3 0-2.4.2-3.3.5-.9.4-1.6 1-2 1.6a3.5 3.5 0 0 0-.3 4c.3.5.7.9 1.3 1.2l1.8 1 2 .5 3.2.8c1.3.3 2.5.7 3.7 1.2a13 13 0 0 1 3.2 1.8 8.1 8.1 0 0 1 3 6.5c0 2-.5 3.7-1.5 5.1a10 10 0 0 1-4.4 3.5c-1.8.8-4.1 1.2-6.8 1.2-2.6 0-4.9-.4-6.8-1.2-2-.8-3.4-2-4.5-3.5a10 10 0 0 1-1.7-5.6h6a5 5 0 0 0 3.5 4.6c1 .4 2.2.6 3.4.6 1.3 0 2.5-.2 3.5-.6 1-.4 1.8-1 2.4-1.7a4 4 0 0 0 .8-2.4c0-.9-.2-1.6-.7-2.2a11 11 0 0 0-2.1-1.4l-3.2-1-3.8-1c-2.8-.7-5-1.7-6.6-3.2a7.2 7.2 0 0 1-2.4-5.7 8 8 0 0 1 1.7-5 10 10 0 0 1 4.3-3.5c2-.8 4-1.2 6.4-1.2 2.3 0 4.4.4 6.2 1.2 1.8.8 3.2 2 4.3 3.4 1 1.4 1.5 3 1.5 5h-5.8z"/></svg>
+</file>
+
+<file path="cookie/frontend/public/vercel.svg">
+<svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1155 1000"><path d="m577.3 0 577.4 1000H0z" fill="#fff"/></svg>
+</file>
+
+<file path="cookie/frontend/public/window.svg">
+<svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill-rule="evenodd" clip-rule="evenodd" d="M1.5 2.5h13v10a1 1 0 0 1-1 1h-11a1 1 0 0 1-1-1zM0 1h16v11.5a2.5 2.5 0 0 1-2.5 2.5h-11A2.5 2.5 0 0 1 0 12.5zm3.75 4.5a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5M7 4.75a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0m1.75.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5" fill="#666"/></svg>
+</file>
+
+<file path="cookie/frontend/README.md">
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+
+## Getting Started
+
+First, run the development server:
+
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+
+## Learn More
+
+To learn more about Next.js, take a look at the following resources:
+
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+</file>
+
+<file path="cookie/frontend/tsconfig.json">
+{
+  "compilerOptions": {
+    "target": "ES2017",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "react-jsx",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@/*": ["./*"]
+    }
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    ".next/dev/types/**/*.ts",
+    "**/*.mts"
+  ],
+  "exclude": ["node_modules"]
+}
+</file>
+
+</files>

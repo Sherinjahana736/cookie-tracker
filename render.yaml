@@ -1,0 +1,24 @@
+services:
+  # 1. FastAPI Backend Service (Python Web Service)
+  - type: web
+    name: cookie-tracker-backend
+    env: python
+    buildCommand: |
+      cd backend
+      pip install -r requirements.txt
+    startCommand: |
+      cd backend
+      uvicorn main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.10.0
+
+  # 2. React Frontend Service (Static Site)
+  - type: web
+    name: cookie-tracker-frontend
+    env: static
+    buildCommand: |
+      cd frontend
+      npm install
+      npm run build
+    staticPublishPath: frontend/dist
