@@ -1,0 +1,14 @@
+{
+  "name": "cookie-tracker-root",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "cookie/frontend"
+  ],
+  "dependencies": {
+    "next": "16.2.4"
+  },
+  "scripts": {
+    "build": "npm run build --prefix cookie/frontend"
+  }
+}
