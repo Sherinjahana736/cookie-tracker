@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Header from './components/Header';
 import TrackerGraph from './components/TrackerGraph';
@@ -19,7 +19,7 @@ import {
   calculatePerformance,
   getTypeColor,
 } from './lib/data';
-import type { ConsentState, TrackerNode, TrackerEdge } from './lib/types';
+import type { ConsentState, TrackerNode, TrackerEdge, WaterfallEntry } from './lib/types';
 import { API_ENDPOINTS } from './lib/api';
 
 export default function CookieTrackerDashboard() {
@@ -38,6 +38,11 @@ export default function CookieTrackerDashboard() {
   const [hoveredWaterfall, setHoveredWaterfall] = useState<string | null>(null);
   const [canvasTab, setCanvasTab] = useState<'graph' | 'waterfall'>('graph');
 
+  // Backend integration state
+  const [isLive, setIsLive] = useState(false);
+  const [backendData, setBackendData] = useState<{ nodes: TrackerNode[]; edges: TrackerEdge[] } | null>(null);
+  const [liveWaterfall, setLiveWaterfall] = useState<WaterfallEntry[]>([]);
+
   // Start with only the origin and one or two isolated nodes (e.g. TikTok Pixel and first-party CDN)
   const [nodes, setNodes] = useState<TrackerNode[]>(() =>
     trackerNodes.filter(n => n.type === 'origin' || n.id === 'tiktok' || n.id === 'fp_cdn')
@@ -50,20 +55,77 @@ export default function CookieTrackerDashboard() {
     )
   );
 
-  const handleSyntheticDemoClick = () => {
-    // Instantly inject complete mock data for immediate layout population
-    setNodes(trackerNodes);
-    setEdges(trackerEdges);
-  };
-
   const consentActive = consent.analytics || consent.marketing || consent.social;
+
+  // 1. Fetch graph data on mount
+  useEffect(() => {
+    fetch(API_ENDPOINTS.graphData)
+      .then((res) => {
+        if (!res.ok) throw new Error('Failed to fetch from backend');
+        return res.json();
+      })
+      .then((data) => {
+        if (data && data.nodes && data.edges) {
+          // Merge live stats into static nodes configuration to maintain detailed descriptions
+          const mergedNodes = data.nodes.map((bn: any) => {
+            const sn = trackerNodes.find((n) => n.id === bn.id);
+            return {
+              ...sn,
+              ...bn,
+            };
+          });
+          setBackendData({ nodes: mergedNodes, edges: data.edges });
+          setIsLive(true);
+        }
+      })
+      .catch((err) => {
+        console.warn('CookieTrackerDashboard: API Offline, falling back to mock data.', err);
+      });
+  }, []);
+
+  // 2. Fetch waterfall dynamically when consent state changes
+  useEffect(() => {
+    if (!isLive) return;
+
+    fetch(API_ENDPOINTS.waterfall(consentActive))
+      .then((res) => res.json())
+      .then((data) => {
+        if (data && data.entries) {
+          const staticEntries = generateWaterfall(consentActive);
+          const merged = data.entries.map((be: any) => {
+            const se = staticEntries.find((x) => x.id === be.id);
+            return {
+              domain: se?.domain || be.id,
+              initiator: se?.initiator || 'origin',
+              ...be,
+            };
+          });
+          setLiveWaterfall(merged);
+        }
+      })
+      .catch((err) => {
+        console.warn('CookieTrackerDashboard: Failed to fetch live waterfall.', err);
+      });
+  }, [isLive, consentActive]);
+
+  const handleSyntheticDemoClick = () => {
+    if (isLive && backendData) {
+      setNodes(backendData.nodes);
+      setEdges(backendData.edges);
+    } else {
+      setNodes(trackerNodes);
+      setEdges(trackerEdges);
+    }
+  };
 
   // Filter waterfall entries based on loaded nodes so it populates smoothly on click along with the graph
   const waterfall = useMemo(() => {
-    const allEntries = generateWaterfall(consentActive);
+    const allEntries = isLive && liveWaterfall.length > 0
+      ? liveWaterfall
+      : generateWaterfall(consentActive);
     const nodeIds = new Set(nodes.map(n => n.id));
     return allEntries.filter(entry => nodeIds.has(entry.id));
-  }, [consentActive, nodes]);
+  }, [consentActive, nodes, isLive, liveWaterfall]);
 
   const waterfallClean = useMemo(() => {
     const allClean = generateWaterfall(false);
@@ -129,6 +191,7 @@ export default function CookieTrackerDashboard() {
       {/* Header */}
       <Header 
         onSyntheticDemoClick={handleSyntheticDemoClick}
+        isLive={isLive}
       />
 
       {/* Multi-Column Workspace Grid */}

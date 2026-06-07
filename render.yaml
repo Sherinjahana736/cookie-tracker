@@ -4,10 +4,10 @@ services:
     name: cookie-tracker-backend
     env: python
     buildCommand: |
-      cd backend
+      cd cookie/cookie-tracker-graph
       pip install -r requirements.txt
     startCommand: |
-      cd backend
+      cd cookie/cookie-tracker-graph
       uvicorn main:app --host 0.0.0.0 --port $PORT
     envVars:
       - key: PYTHON_VERSION
@@ -18,7 +18,7 @@ services:
     name: cookie-tracker-frontend
     env: static
     buildCommand: |
-      cd frontend
+      cd cookie/frontend
       npm install
       npm run build
-    staticPublishPath: frontend/dist
+    staticPublishPath: cookie/frontend/out

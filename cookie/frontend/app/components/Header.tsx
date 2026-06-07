@@ -6,9 +6,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 interface HeaderProps {
   onToggleOverview?: () => void;
   onSyntheticDemoClick?: () => void;
+  isLive?: boolean;
 }
 
-export default function Header({ onToggleOverview, onSyntheticDemoClick }: HeaderProps) {
+export default function Header({ onToggleOverview, onSyntheticDemoClick, isLive }: HeaderProps) {
   const [showMetaModal, setShowMetaModal] = useState(false);
 
   const tickerItems = [
@@ -76,8 +77,35 @@ export default function Header({ onToggleOverview, onSyntheticDemoClick }: Heade
       <div style={{ padding: '14px 28px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
           <div>
-            <h1 style={{ fontSize: 20, fontWeight: 800, margin: 0, letterSpacing: '-0.02em' }}>
+            <h1 style={{ fontSize: 20, fontWeight: 800, margin: 0, letterSpacing: '-0.02em', display: 'flex', alignItems: 'center', gap: 8 }}>
               <span className="gradient-text">INFOCREON</span>
+              <span style={{ 
+                fontSize: 8, 
+                fontWeight: 700, 
+                padding: '2px 6px', 
+                background: isLive ? 'rgba(16, 185, 129, 0.08)' : 'rgba(239, 68, 68, 0.08)', 
+                color: isLive ? '#10b981' : '#ef4444', 
+                border: isLive ? '1px solid rgba(16, 185, 129, 0.25)' : '1px solid rgba(239, 68, 68, 0.25)', 
+                borderRadius: 4, 
+                textTransform: 'uppercase',
+                letterSpacing: '0.05em',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: 4
+              }}>
+                <motion.span 
+                  animate={isLive ? { opacity: [0.4, 1, 0.4] } : {}}
+                  transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+                  style={{ 
+                    width: 5, 
+                    height: 5, 
+                    borderRadius: '50%', 
+                    background: isLive ? '#10b981' : '#ef4444',
+                    boxShadow: isLive ? '0 0 6px #10b981' : 'none',
+                  }} 
+                />
+                {isLive ? 'LIVE' : 'DEMO'}
+              </span>
             </h1>
             <p style={{ fontSize: 11, color: 'var(--text-muted)', margin: 0, marginTop: 2 }}>
               Real Rails Intelligence Library · <span style={{ color: 'var(--text-accent)' }}>Distribution &amp; Demand</span>
@@ -121,31 +149,31 @@ export default function Header({ onToggleOverview, onSyntheticDemoClick }: Heade
             style={{
               fontSize: 10,
               padding: '4px 12px',
-              background: 'rgba(139, 92, 246, 0.15)',
+              background: isLive ? 'rgba(16, 185, 129, 0.15)' : 'rgba(139, 92, 246, 0.15)',
               color: '#fff',
-              border: '1px solid var(--border-accent)',
+              border: isLive ? '1px solid rgba(16, 185, 129, 0.5)' : '1px solid var(--border-accent)',
               borderRadius: 4,
               fontWeight: 700,
               fontFamily: 'var(--font-mono)',
               letterSpacing: '0.04em',
               cursor: 'pointer',
-              boxShadow: '0 0 12px rgba(139, 92, 246, 0.2)',
+              boxShadow: isLive ? '0 0 12px rgba(16, 185, 129, 0.2)' : '0 0 12px rgba(139, 92, 246, 0.2)',
               transition: 'all 0.2s ease-in-out',
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.background = 'var(--gradient-main)';
-              e.currentTarget.style.boxShadow = '0 0 20px rgba(139, 92, 246, 0.5)';
+              e.currentTarget.style.background = isLive ? 'rgba(16, 185, 129, 0.3)' : 'var(--gradient-main)';
+              e.currentTarget.style.boxShadow = isLive ? '0 0 20px rgba(16, 185, 129, 0.5)' : '0 0 20px rgba(139, 92, 246, 0.5)';
               e.currentTarget.style.borderColor = 'transparent';
               e.currentTarget.style.transform = 'scale(1.05)';
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.background = 'rgba(139, 92, 246, 0.15)';
-              e.currentTarget.style.boxShadow = '0 0 12px rgba(139, 92, 246, 0.2)';
-              e.currentTarget.style.borderColor = 'var(--border-accent)';
+              e.currentTarget.style.background = isLive ? 'rgba(16, 185, 129, 0.15)' : 'rgba(139, 92, 246, 0.15)';
+              e.currentTarget.style.boxShadow = isLive ? '0 0 12px rgba(16, 185, 129, 0.2)' : '0 0 12px rgba(139, 92, 246, 0.2)';
+              e.currentTarget.style.borderColor = isLive ? 'rgba(16, 185, 129, 0.5)' : 'var(--border-accent)';
               e.currentTarget.style.transform = 'none';
             }}
           >
-            SYNTHETIC DEMO
+            {isLive ? 'LIVE ANALYSIS' : 'SYNTHETIC DEMO'}
           </button>
 
           {/* Minimalist Info (i) Button */}

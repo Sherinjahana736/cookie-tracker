@@ -1,9 +1,41 @@
 'use client';
 
-import React from 'react';
-import { domainGroups, getGroupColor } from '../lib/data';
+import React, { useState, useEffect } from 'react';
+import { domainGroups as staticDomainGroups, getGroupColor } from '../lib/data';
+import { API_ENDPOINTS } from '../lib/api';
+import type { DomainGroup } from '../lib/types';
 
 export default function DomainGroupPanel() {
+  const [groups, setGroups] = useState<DomainGroup[]>(staticDomainGroups);
+
+  useEffect(() => {
+    fetch(API_ENDPOINTS.domainGroups)
+      .then((res) => {
+        if (!res.ok) throw new Error('Network response was not ok');
+        return res.json();
+      })
+      .then((data) => {
+        if (data && data.groups) {
+          const merged = staticDomainGroups.map((g) => {
+            const bg = data.groups.find((x: any) => x.name.toLowerCase() === g.name.toLowerCase());
+            if (bg) {
+              return {
+                ...g,
+                trackerCount: bg.trackerCount,
+                cookieCount: bg.cookieCount,
+                marketShare: bg.marketShare,
+              };
+            }
+            return g;
+          });
+          setGroups(merged);
+        }
+      })
+      .catch((err) => {
+        console.warn('DomainGroupPanel: Failed to fetch from backend, using fallback data.', err);
+      });
+  }, []);
+
   return (
     <div className="glass-card" style={{ padding: '20px' }}>
       <h3 className="section-title">Who Controls the Rail</h3>
@@ -12,7 +44,7 @@ export default function DomainGroupPanel() {
       </p>
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-        {domainGroups.map((g) => {
+        {groups.map((g) => {
           const color = getGroupColor(g.name) || g.color;
           return (
             <div key={g.name} style={{ padding: '12px', background: `${color}08`, border: `1px solid ${color}20`, borderRadius: 10, transition: 'all 0.2s' }}>

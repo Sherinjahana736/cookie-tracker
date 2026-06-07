@@ -1,9 +1,38 @@
 'use client';
 
-import React from 'react';
-import { gdeltEvents } from '../lib/data';
+import React, { useState, useEffect } from 'react';
+import { gdeltEvents as staticGdeltEvents } from '../lib/data';
+import { API_ENDPOINTS } from '../lib/api';
+import type { GdeltEvent } from '../lib/types';
 
 export default function GdeltFeed() {
+  const [events, setEvents] = useState<GdeltEvent[]>(staticGdeltEvents);
+  const [isLive, setIsLive] = useState(false);
+
+  useEffect(() => {
+    fetch(API_ENDPOINTS.gdeltEvents)
+      .then((res) => {
+        if (!res.ok) throw new Error('Network response was not ok');
+        return res.json();
+      })
+      .then((data) => {
+        if (data && data.events) {
+          const merged = data.events.map((be: any) => {
+            const se = staticGdeltEvents.find((e) => e.id === be.id);
+            return {
+              ...se,
+              ...be,
+            };
+          });
+          setEvents(merged);
+          setIsLive(true);
+        }
+      })
+      .catch((err) => {
+        console.warn('GdeltFeed: Failed to fetch from backend, using fallback data.', err);
+      });
+  }, []);
+
   const toneColor = (tone: number) => tone < -2 ? '#f87171' : tone < 0 ? '#fbbf24' : '#34d399';
   const themeColors: Record<string, string> = {
     REGULATION: '#818cf8',
@@ -17,13 +46,23 @@ export default function GdeltFeed() {
     <div className="glass-card" style={{ padding: '20px' }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 14 }}>
         <h3 className="section-title" style={{ margin: 0 }}>GDELT Signal Feed</h3>
-        <span style={{ fontSize: 9, color: 'var(--text-muted)', fontFamily: 'var(--font-mono)', padding: '2px 8px', background: 'rgba(245,158,11,0.1)', border: '1px solid rgba(245,158,11,0.2)', borderRadius: 4 }}>
-          SYNTHETIC DATA
+        <span style={{ 
+          fontSize: 9, 
+          color: isLive ? '#10b981' : 'var(--text-muted)', 
+          fontFamily: 'var(--font-mono)', 
+          padding: '2px 8px', 
+          background: isLive ? 'rgba(16, 185, 129, 0.08)' : 'rgba(255, 255, 255, 0.03)', 
+          border: isLive ? '1px solid rgba(16, 185, 129, 0.25)' : '1px solid var(--border-subtle)', 
+          borderRadius: 4,
+          textTransform: 'uppercase',
+          fontWeight: 600
+        }}>
+          {isLive ? 'LIVE DATA' : 'DEMO DATA'}
         </span>
       </div>
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: 8, maxHeight: 320, overflowY: 'auto' }}>
-        {gdeltEvents.map((e) => (
+        {events.map((e) => (
           <div key={e.id} style={{ padding: '10px 12px', background: 'rgba(255,255,255,0.02)', borderRadius: 8, borderLeft: `3px solid ${themeColors[e.theme] || '#64748b'}` }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 4 }}>
               <span style={{ fontSize: 12, fontWeight: 600, color: 'var(--text-primary)', lineHeight: 1.4, flex: 1 }}>{e.title}</span>
@@ -32,7 +71,7 @@ export default function GdeltFeed() {
               <span style={{ fontSize: 10, color: 'var(--text-muted)', fontFamily: 'var(--font-mono)' }}>{e.date}</span>
               <span style={{ fontSize: 9, padding: '1px 6px', background: `${themeColors[e.theme]}15`, color: themeColors[e.theme], borderRadius: 3, fontWeight: 600 }}>{e.theme}</span>
               <span style={{ fontSize: 10, color: toneColor(e.tone), fontFamily: 'var(--font-mono)' }}>tone: {e.tone > 0 ? '+' : ''}{e.tone}</span>
-              <span style={{ fontSize: 10, color: 'var(--text-muted)' }}>→ {e.trackerCategory}</span>
+              {e.trackerCategory && <span style={{ fontSize: 10, color: 'var(--text-muted)' }}>→ {e.trackerCategory}</span>}
             </div>
           </div>
         ))}
